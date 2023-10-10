@@ -20,7 +20,10 @@ export class Token {
             return;
         }
         this.position += spaces;
-
+    }
+	
+    hasWon(): boolean {
+        return this.position === 100;
     }
 
 }

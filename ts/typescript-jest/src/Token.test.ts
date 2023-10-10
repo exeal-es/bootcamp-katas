@@ -34,4 +34,10 @@ describe("Token", () => {
     expect(token.getPosition()).toBe(97);
  
   })
+  
+      it("should be a winner when the token is on position 100", () => {
+        const token = new Token(100);
+
+        expect(token.hasWon()).toBe(true);
+    })
 })
