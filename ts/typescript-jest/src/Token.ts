@@ -11,5 +11,9 @@ export class Token {
         return this.position;
     }
 
+    move(spaces: number): void {
+        this.position += spaces;
+    }
+
 }
   
