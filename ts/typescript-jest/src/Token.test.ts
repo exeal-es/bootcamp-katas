@@ -11,4 +11,11 @@ describe("Token", () => {
     token.move(3);
     expect(token.getPosition()).toBe(4);
   })
+
+  it("should be on position 8 after moving 3 and then 4 spaces", () => {
+    const token = new Token();
+    token.move(3);
+    token.move(4);
+    expect(token.getPosition()).toBe(8);
+  })
 })
