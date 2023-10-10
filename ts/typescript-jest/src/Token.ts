@@ -1,11 +1,14 @@
-import { Position } from "./Position";
-
 export class Token {
 
-    private position: Position; 
 
-    constructor(position: Position) {
-        this.position = position; 
+    private position: number; 
+
+    constructor() {
+        this.position = 1; 
+    }
+
+    getPosition(): number {
+        return this.position;
     }
 
 }
