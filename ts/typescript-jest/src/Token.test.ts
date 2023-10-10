@@ -18,4 +18,11 @@ describe("Token", () => {
     token.move(4);
     expect(token.getPosition()).toBe(8);
   })
+
+  it("should be on position 100 after moving 3 when token is on postion 97", () => {
+    const token = new Token(97);
+
+    token.move(3);
+    expect(token.getPosition()).toBe(100);
+  })
 })

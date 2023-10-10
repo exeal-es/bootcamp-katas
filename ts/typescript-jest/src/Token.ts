@@ -1,18 +1,26 @@
 export class Token {
 
 
-    private position: number; 
+    private position: number;
 
-    constructor() {
-        this.position = 1; 
+    constructor(position: number = 1) {
+        this.position = position; 
     }
 
     getPosition(): number {
         return this.position;
     }
 
+    private moveAllowed(spaces: number): boolean {
+        return this.position + spaces <= 100;
+    }
+
     move(spaces: number): void {
+        if (!this.moveAllowed(spaces)) {
+            return;
+        }
         this.position += spaces;
+
     }
 
 }
