@@ -27,7 +27,6 @@ describe('Token', () => {
   })
 
   it('should be on position 97 after moving 4 when token is on position 97', () => {
-
     const token = new Token(97)
 
     token.move(4)
@@ -36,8 +35,8 @@ describe('Token', () => {
   })
 
   it('should be a winner when the token is on position 100', () => {
-        const token = new Token(100)
+    const token = new Token(100)
 
-        expect(token.hasWon()).toBe(true)
-    })
+    expect(token.hasWon()).toBe(true)
+  })
 })
