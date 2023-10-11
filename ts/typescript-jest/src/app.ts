@@ -1,15 +1,14 @@
-import { Dice } from './Dice';
-import { Game } from "./Game";
-import { Token } from "./Token";
+import { Game } from './Game'
 
+import { UserInputReader } from './UserInputReader'
 
-const token = new Token();
-const dice = new Dice();
-const game = new Game(token, dice);
-
-for (let i = 0; i < 10; i++) {
-    game.play();
-
-    console.log(token.getPosition());
-
+export async function play(game: Game, reader: UserInputReader): Promise<void> {
+  do {
+    console.log(`Pulsa enter para tirar el dado`)
+    await reader.askUserToRollDice()
+    game.play()
+    console.log(`El token está en la posición ${game.getTokenPosition()}`)
+  } while (!game.hasEnded())
+  reader.finish()
+  return Promise.resolve()
 }

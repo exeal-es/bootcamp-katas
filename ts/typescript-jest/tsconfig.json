@@ -7,11 +7,21 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "lib": ["es6"],
+    "lib": [
+      "es6"
+    ],
     "outDir": "lib",
     "alwaysStrict": true,
-    "types": ["node", "jest"]
+    "types": [
+      "node",
+      "jest"
+    ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*",
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,5 +1,5 @@
 export class Dice {
-  roll() {
+  public roll() {
     return Math.floor(Math.random() * 6) + 1
   }
 }

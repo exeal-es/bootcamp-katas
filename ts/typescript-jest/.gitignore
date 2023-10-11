@@ -44,3 +44,5 @@ node_modules
 employee-token.json
 candidate-token.json
 company-owner-token.json
+
+yarn.lock
