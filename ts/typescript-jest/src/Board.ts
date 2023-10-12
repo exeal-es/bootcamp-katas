@@ -12,8 +12,8 @@ export class Board {
     this.dice = dice
   }
 
-  public add(snakes: Snake): void {
-    this.snakes.add(snakes)
+  public place(snake: Snake): void {
+    this.snakes.add(snake)
   }
 
   public hasSnake(snake: Snake): boolean {
@@ -22,8 +22,9 @@ export class Board {
 
   public moveToken(): void {
     const tokenPosition = this.token.move(this.dice.roll())
-    if (tokenPosition === 12) {
-      this.token.applySnakeEffect(2)
+    const snake = this.findSnake(tokenPosition)
+    if (snake) {
+      this.token.applySnakeEffect(snake)
     }
   }
 
@@ -33,5 +34,9 @@ export class Board {
 
   public hasWinner(): boolean {
     return this.token.hasWon()
+  }
+
+  private findSnake(tokenPosition: number): Snake | undefined {
+    return Array.from(this.snakes).find((snake) => snake.hasHeadIn(tokenPosition))
   }
 }

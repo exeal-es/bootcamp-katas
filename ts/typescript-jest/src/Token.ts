@@ -1,3 +1,5 @@
+import { Snake } from './Snake'
+
 export class Token {
 
     private position: number
@@ -18,8 +20,8 @@ export class Token {
         return this.position
     }
 
-    public applySnakeEffect(tailPosition: number): number {
-        this.position = tailPosition
+    public applySnakeEffect(snake: Snake): number {
+        this.position = snake.getTailPosition()
         return this.position
     }
 

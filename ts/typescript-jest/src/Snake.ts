@@ -7,8 +7,16 @@ export class Snake {
     this.tail = tail
   }
 
+  public hasHeadIn(position: number): boolean {
+    return this.head === position
+  }
+
   public connects(head: number, tail: number): boolean {
     return this.head === head && this.tail === tail
+  }
+
+  public getTailPosition(): number {
+    return this.tail
   }
 
   public equals(snake: Snake): boolean {
