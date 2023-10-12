@@ -1,4 +1,6 @@
-export class Snake {
+import { SquareConnectable } from './SquareConnectable'
+
+export class Snake implements SquareConnectable {
   private readonly head: number
   private readonly tail: number
 

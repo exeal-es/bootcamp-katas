@@ -1,4 +1,6 @@
-export class Ladder {
+import { SquareConnectable } from './SquareConnectable'
+
+export class Ladder implements SquareConnectable {
   private readonly bottom: number
   private readonly top: number
 
