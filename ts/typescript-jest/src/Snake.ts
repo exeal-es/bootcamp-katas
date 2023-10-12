@@ -1,6 +1,7 @@
-import { SquareConnectable } from './SquareConnectable'
+import { Figure } from './Figure'
+import { Token } from './Token'
 
-export class Snake implements SquareConnectable {
+export class Snake implements Figure {
   private readonly head: number
   private readonly tail: number
 
@@ -9,12 +10,18 @@ export class Snake implements SquareConnectable {
     this.tail = tail
   }
 
-  public hasHeadIn(position: number): boolean {
-    return this.head === position
-  }
-
   public connects(head: number, tail: number): boolean {
     return this.head === head && this.tail === tail
+  }
+
+  public applyEffect(token: Token): void {
+    if (this.hasHeadIn(token.getPosition())) {
+      token.applySnakeEffect(this)
+    }
+  }
+
+  public hasHeadIn(position: number): boolean {
+    return this.head === position
   }
 
   public getTailPosition(): number {

@@ -1,6 +1,7 @@
-import { SquareConnectable } from './SquareConnectable'
+import { Figure } from './Figure'
+import { Token } from './Token'
 
-export class Ladder implements SquareConnectable {
+export class Ladder implements Figure {
   private readonly bottom: number
   private readonly top: number
 
@@ -11,6 +12,12 @@ export class Ladder implements SquareConnectable {
 
   public connects(bottom: number, top: number): boolean {
     return this.bottom === bottom && this.top === top
+  }
+
+  public applyEffect(token: Token): void {
+    if (this.hasBottomIn(token.getPosition())) {
+      token.applyLadderEffect(this)
+    }
   }
 
   public hasBottomIn(tokenPosition: number): boolean {
