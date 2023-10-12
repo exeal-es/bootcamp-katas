@@ -10,11 +10,16 @@ export class Token {
         return this.position
     }
 
-    public move(spaces: number): void {
+    public move(spaces: number): number {
         if (!this.moveAllowed(spaces)) {
             return
         }
         this.position += spaces
+        return this.position
+    }
+
+    public applySnakeEffect(tailPosition: number): void {
+        this.position = tailPosition
     }
 
     public hasWon(): boolean {
