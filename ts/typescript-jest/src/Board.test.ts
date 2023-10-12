@@ -78,4 +78,14 @@ describe('Board', () => {
     board.placeSnake(snake)
     expect(board.hasSnake(snake)).toBe(true)
   })
+
+  it('should allow to place ladders', () => {
+    const token = new Token()
+    const dice = new Dice()
+    const board = new Board(token, dice)
+    const ladder = new Ladder(2, 12)
+
+    board.placeLadder(ladder)
+    expect(board.hasLadder(ladder)).toBe(true)
+  })
 })

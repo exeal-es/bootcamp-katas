@@ -26,6 +26,10 @@ export class Board {
     return this.snakes.has(snake)
   }
 
+  public hasLadder(ladder: Ladder): boolean {
+    return this.ladders.has(ladder)
+  }
+
   public moveToken(): void {
     const tokenPosition = this.token.move(this.dice.roll())
     const snake = this.findSnake(tokenPosition)
