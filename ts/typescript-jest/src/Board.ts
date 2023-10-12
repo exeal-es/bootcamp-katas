@@ -1,13 +1,23 @@
 import { Dice } from './Dice'
+import { Snake } from './Snake'
 import { Token } from './Token'
 
 export class Board {
-  public token: Token
-  public dice: Dice
+  private readonly token: Token
+  private readonly dice: Dice
+  private readonly snakes: Set<Snake> = new Set()
 
   constructor(token: Token, dice: Dice) {
     this.token = token
     this.dice = dice
+  }
+
+  public add(snakes: Snake): void {
+    this.snakes.add(snakes)
+  }
+
+  public hasSnake(snake: Snake): boolean {
+    return this.snakes.has(snake)
   }
 
   public moveToken(): void {

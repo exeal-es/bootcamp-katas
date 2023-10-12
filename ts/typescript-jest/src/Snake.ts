@@ -10,4 +10,8 @@ export class Snake {
   public connects(head: number, tail: number): boolean {
     return this.head === head && this.tail === tail
   }
+
+  public equals(snake: Snake): boolean {
+    return this.connects(snake.head, snake.tail)
+  }
 }
