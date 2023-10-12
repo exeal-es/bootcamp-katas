@@ -1,7 +1,7 @@
 import { Board } from './Board'
 
 export class Game {
-    private board: Board
+    private readonly board: Board
 
     constructor(board: Board) {
         this.board = board

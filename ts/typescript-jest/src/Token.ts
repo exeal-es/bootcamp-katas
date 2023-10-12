@@ -1,7 +1,6 @@
 import { Snake } from './Snake'
 
 export class Token {
-
     private position: number
 
     constructor(position: number = 1) {
@@ -32,5 +31,4 @@ export class Token {
     private moveAllowed(spaces: number): boolean {
         return this.position + spaces <= 100
     }
-
 }
