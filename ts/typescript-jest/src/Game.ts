@@ -1,25 +1,21 @@
-import { Dice } from './Dice'
-import { Token } from './Token'
-import { UserInputReader } from './UserInputReader'
+import { Board } from './Board'
 
 export class Game {
-    public token: Token
-    public dice: Dice
+    private board: Board
 
-    constructor(token: Token, dice: Dice) {
-        this.token = token
-        this.dice = dice
+    constructor(board: Board) {
+        this.board = board
     }
 
-    public play() {
-        this.token.move(this.dice.roll())
+    public play(): void {
+        return this.board.moveToken()
     }
 
     public getTokenPosition(): number {
-        return this.token.getPosition()
+        return this.board.getTokenPosition()
     }
 
     public hasEnded(): boolean {
-        return this.token.hasWon()
+        return this.board.hasWinner()
     }
 }

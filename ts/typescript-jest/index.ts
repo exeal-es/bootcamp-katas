@@ -1,3 +1,4 @@
+import { Board } from './src/Board';
 import { ConsoleUserInputReader } from './src/ConsoleUserInputReader';
 import { Dice } from './src/Dice';
 import { Game } from './src/Game';
@@ -8,7 +9,8 @@ import * as readline from 'readline'
 
 const token = new Token()
 const dice = new Dice()
-const game = new Game(token, dice)
+const board = new Board(token, dice)
+const game = new Game(board)
 const reader = new ConsoleUserInputReader(readline.createInterface({
   input: process.stdin,
   output: process.stdout

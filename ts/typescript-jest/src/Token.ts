@@ -18,8 +18,9 @@ export class Token {
         return this.position
     }
 
-    public applySnakeEffect(tailPosition: number): void {
+    public applySnakeEffect(tailPosition: number): number {
         this.position = tailPosition
+        return this.position
     }
 
     public hasWon(): boolean {

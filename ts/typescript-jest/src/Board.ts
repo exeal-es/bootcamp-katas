@@ -16,4 +16,12 @@ export class Board {
       this.token.applySnakeEffect(2)
     }
   }
+
+  public getTokenPosition(): number {
+    return this.token.getPosition()
+  }
+
+  public hasWinner(): boolean {
+    return this.token.hasWon()
+  }
 }
