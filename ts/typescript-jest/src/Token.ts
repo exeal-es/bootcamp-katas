@@ -1,3 +1,4 @@
+import { Ladder } from './Ladder'
 import { Snake } from './Snake'
 
 export class Token {
@@ -21,6 +22,11 @@ export class Token {
 
     public applySnakeEffect(snake: Snake): number {
         this.position = snake.getTailPosition()
+        return this.position
+    }
+
+    public applyLadderEffect(ladder: Ladder): number {
+        this.position = ladder.getTopPosition()
         return this.position
     }
 

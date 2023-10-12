@@ -1,5 +1,6 @@
 import { Board } from './Board'
 import { Dice } from './Dice'
+import { Ladder } from './Ladder'
 import { Snake } from './Snake'
 import { Token } from './Token'
 
@@ -15,7 +16,7 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(2)
 
-      board.place(snake)
+      board.placeSnake(snake)
       board.moveToken()
       expect(token.getPosition()).toBe(2)
     })
@@ -31,7 +32,7 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(2)
 
-      board.place(snake)
+      board.placeSnake(snake)
       board.moveToken()
       expect(token.getPosition()).toBe(3)
     })
@@ -47,9 +48,25 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(1)
 
-      board.place(snake)
+      board.placeSnake(snake)
       board.moveToken()
       expect(token.getPosition()).toBe(2)
+    })
+
+  it('should moves token to position 12 when token arrives at position 2' +
+    ' and there is a ladder connecting 2 and 12', () => {
+
+      const token = new Token(1)
+      const dice = new Dice()
+      const board = new Board(token, dice)
+      const ladder = new Ladder(2, 12)
+
+      const rollSpy = jest.spyOn(dice, 'roll')
+      rollSpy.mockReturnValue(1)
+
+      board.placeLadder(ladder)
+      board.moveToken()
+      expect(token.getPosition()).toBe(12)
     })
 
   it('should allow to place snakes', () => {
@@ -58,7 +75,7 @@ describe('Board', () => {
     const board = new Board(token, dice)
     const snake = new Snake(12, 2)
 
-    board.place(snake)
+    board.placeSnake(snake)
     expect(board.hasSnake(snake)).toBe(true)
   })
 })
