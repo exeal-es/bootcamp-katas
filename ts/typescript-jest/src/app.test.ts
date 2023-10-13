@@ -1,6 +1,5 @@
 import { play } from './app'
 import { Board } from './Board'
-import { Dice } from './Dice'
 import { Game } from './Game'
 import { Token } from './Token'
 import { UserInputReader } from './UserInputReader'
@@ -16,8 +15,7 @@ class FakeUserInputReader implements UserInputReader {
 describe('App', () => {
   test('should handle an entire game', async (done) => {
     const token = new Token()
-    const dice = new Dice()
-    const board = new Board(token, dice)
+    const board = new Board(token)
     const game = new Game(board)
     const reader = new FakeUserInputReader()
 

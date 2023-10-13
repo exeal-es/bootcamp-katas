@@ -1,5 +1,5 @@
 import { Board } from './Board'
-import { Dice } from './Dice'
+import { FakeDice } from './FakeDice'
 import { Ladder } from './Ladder'
 import { Snake } from './Snake'
 import { Token } from './Token'
@@ -9,15 +9,11 @@ describe('Board', () => {
     ' and there is a snake connecting 12 and 2', () => {
 
       const token = new Token(10)
-      const dice = new Dice()
-      const board = new Board(token, dice)
+      const board = new Board(token)
       const snake = new Snake(12, 2)
 
-      const rollSpy = jest.spyOn(dice, 'roll')
-      rollSpy.mockReturnValue(2)
-
       board.place(snake)
-      board.moveToken()
+      board.throwDice(new FakeDice(2))
       expect(token.getPosition()).toBe(2)
     })
 
@@ -25,15 +21,11 @@ describe('Board', () => {
     ' and there is a snake connecting 15 and 3', () => {
 
       const token = new Token(13)
-      const dice = new Dice()
-      const board = new Board(token, dice)
+      const board = new Board(token)
       const snake = new Snake(15, 3)
 
-      const rollSpy = jest.spyOn(dice, 'roll')
-      rollSpy.mockReturnValue(2)
-
       board.place(snake)
-      board.moveToken()
+      board.throwDice(new FakeDice(2))
       expect(token.getPosition()).toBe(3)
     })
 
@@ -41,15 +33,11 @@ describe('Board', () => {
     ' and there is a snake connecting 12 and 2', () => {
 
       const token = new Token(1)
-      const dice = new Dice()
-      const board = new Board(token, dice)
+      const board = new Board(token)
       const snake = new Snake(12, 2)
 
-      const rollSpy = jest.spyOn(dice, 'roll')
-      rollSpy.mockReturnValue(1)
-
       board.place(snake)
-      board.moveToken()
+      board.throwDice(new FakeDice(1))
       expect(token.getPosition()).toBe(2)
     })
 
@@ -57,15 +45,11 @@ describe('Board', () => {
     ' and there is a ladder connecting 2 and 12', () => {
 
       const token = new Token(1)
-      const dice = new Dice()
-      const board = new Board(token, dice)
+      const board = new Board(token)
       const ladder = new Ladder(2, 12)
 
-      const rollSpy = jest.spyOn(dice, 'roll')
-      rollSpy.mockReturnValue(1)
-
       board.place(ladder)
-      board.moveToken()
+      board.throwDice(new FakeDice(1))
       expect(token.getPosition()).toBe(12)
     })
 
@@ -73,22 +57,17 @@ describe('Board', () => {
     ' and there is a ladder connecting 2 and 12', () => {
 
       const token = new Token(11)
-      const dice = new Dice()
-      const board = new Board(token, dice)
+      const board = new Board(token)
       const ladder = new Ladder(2, 12)
 
-      const rollSpy = jest.spyOn(dice, 'roll')
-      rollSpy.mockReturnValue(1)
-
       board.place(ladder)
-      board.moveToken()
+      board.throwDice(new FakeDice(1))
       expect(token.getPosition()).toBe(12)
     })
 
   it('should allow to place figures', () => {
     const token = new Token()
-    const dice = new Dice()
-    const board = new Board(token, dice)
+    const board = new Board(token)
     const snake = new Snake(12, 2)
     const ladder = new Ladder(3, 13)
 

@@ -1,15 +1,13 @@
-import { Dice } from './Dice'
+import { CanRoll } from './CanRoll'
 import { Figure } from './Figure'
 import { Token } from './Token'
 
 export class Board {
   private readonly token: Token
-  private readonly dice: Dice
   private readonly figures: Set<Figure> = new Set()
 
-  constructor(token: Token, dice: Dice) {
+  constructor(token: Token) {
     this.token = token
-    this.dice = dice
   }
 
   public place(figure: Figure): void {
@@ -20,8 +18,8 @@ export class Board {
     return this.figures.has(figure)
   }
 
-  public moveToken(): void {
-    this.token.move(this.dice.roll())
+  public throwDice(canRoll: CanRoll): void {
+    this.token.move(canRoll.roll())
     this.applyFigureEfect(this.token)
   }
 

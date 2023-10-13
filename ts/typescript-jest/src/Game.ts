@@ -1,4 +1,5 @@
 import { Board } from './Board'
+import { CanRoll } from './CanRoll'
 
 export class Game {
     private readonly board: Board
@@ -7,8 +8,8 @@ export class Game {
         this.board = board
     }
 
-    public play(): void {
-        return this.board.moveToken()
+    public throwDice(canRoll: CanRoll): void {
+        return this.board.throwDice(canRoll)
     }
 
     public getTokenPosition(): number {
