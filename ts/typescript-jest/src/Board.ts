@@ -1,45 +1,28 @@
 import { Dice } from './Dice'
-import { Ladder } from './Ladder'
-import { Snake } from './Snake'
+import { Figure } from './Figure'
 import { Token } from './Token'
 
 export class Board {
   private readonly token: Token
   private readonly dice: Dice
-  private readonly snakes: Set<Snake> = new Set()
-  private readonly ladders: Set<Ladder> = new Set()
+  private readonly figures: Set<Figure> = new Set()
 
   constructor(token: Token, dice: Dice) {
     this.token = token
     this.dice = dice
   }
 
-  public placeSnake(snake: Snake): void {
-    this.snakes.add(snake)
+  public place(figure: Figure): void {
+    this.figures.add(figure)
   }
 
-  public placeLadder(ladder: Ladder): void {
-    this.ladders.add(ladder)
-  }
-
-  public hasSnake(snake: Snake): boolean {
-    return this.snakes.has(snake)
-  }
-
-  public hasLadder(ladder: Ladder): boolean {
-    return this.ladders.has(ladder)
+  public has(figure: Figure): boolean {
+    return this.figures.has(figure)
   }
 
   public moveToken(): void {
-    const tokenPosition = this.token.move(this.dice.roll())
-    const snake = this.findSnake(tokenPosition)
-    const ladder = this.findLadder(tokenPosition)
-    if (snake) {
-      this.token.applySnakeEffect(snake)
-    }
-    if (ladder) {
-      this.token.applyLadderEffect(ladder)
-    }
+    this.token.move(this.dice.roll())
+    this.applyFigureEfect(this.token)
   }
 
   public getTokenPosition(): number {
@@ -50,11 +33,8 @@ export class Board {
     return this.token.hasWon()
   }
 
-  private findLadder(tokenPosition: number): Ladder | undefined {
-    return Array.from(this.ladders).find((ladder) => ladder.hasBottomIn(tokenPosition))
-  }
-
-  private findSnake(tokenPosition: number): Snake | undefined {
-    return Array.from(this.snakes).find((snake) => snake.hasHeadIn(tokenPosition))
+  private applyFigureEfect(token: Token): void {
+    Array.from(this.figures).filter((figure) => figure.affects(token))
+      .forEach((figure) => figure.applyEffect(token))
   }
 }

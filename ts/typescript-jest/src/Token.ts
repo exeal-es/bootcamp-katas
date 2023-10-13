@@ -1,5 +1,3 @@
-import { Ladder } from './Ladder'
-import { Snake } from './Snake'
 
 export class Token {
     private position: number
@@ -12,22 +10,11 @@ export class Token {
         return this.position
     }
 
-    public move(spaces: number): number {
+    public move(spaces: number): void {
         if (!this.moveAllowed(spaces)) {
             return
         }
         this.position += spaces
-        return this.position
-    }
-
-    public applySnakeEffect(snake: Snake): number {
-        this.position = snake.getTailPosition()
-        return this.position
-    }
-
-    public applyLadderEffect(ladder: Ladder): number {
-        this.position = ladder.getTopPosition()
-        return this.position
     }
 
     public hasWon(): boolean {

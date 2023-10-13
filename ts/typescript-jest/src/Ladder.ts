@@ -14,9 +14,13 @@ export class Ladder implements Figure {
     return this.bottom === bottom && this.top === top
   }
 
+  public affects(token: Token): boolean {
+    return this.hasBottomIn(token.getPosition())
+  }
+
   public applyEffect(token: Token): void {
-    if (this.hasBottomIn(token.getPosition())) {
-      token.applyLadderEffect(this)
+    if (this.affects(token)) {
+      token.move(this.top - this.bottom)
     }
   }
 

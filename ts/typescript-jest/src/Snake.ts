@@ -14,9 +14,13 @@ export class Snake implements Figure {
     return this.head === head && this.tail === tail
   }
 
+  public affects(token: Token): boolean {
+    return this.hasHeadIn(token.getPosition())
+  }
+
   public applyEffect(token: Token): void {
-    if (this.hasHeadIn(token.getPosition())) {
-      token.applySnakeEffect(this)
+    if (this.affects(token)) {
+      token.move(-(this.head - this.tail))
     }
   }
 

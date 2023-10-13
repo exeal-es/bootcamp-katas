@@ -16,7 +16,7 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(2)
 
-      board.placeSnake(snake)
+      board.place(snake)
       board.moveToken()
       expect(token.getPosition()).toBe(2)
     })
@@ -32,7 +32,7 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(2)
 
-      board.placeSnake(snake)
+      board.place(snake)
       board.moveToken()
       expect(token.getPosition()).toBe(3)
     })
@@ -48,7 +48,7 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(1)
 
-      board.placeSnake(snake)
+      board.place(snake)
       board.moveToken()
       expect(token.getPosition()).toBe(2)
     })
@@ -64,28 +64,21 @@ describe('Board', () => {
       const rollSpy = jest.spyOn(dice, 'roll')
       rollSpy.mockReturnValue(1)
 
-      board.placeLadder(ladder)
+      board.place(ladder)
       board.moveToken()
       expect(token.getPosition()).toBe(12)
     })
 
-  it('should allow to place snakes', () => {
+  it('should allow to place figures', () => {
     const token = new Token()
     const dice = new Dice()
     const board = new Board(token, dice)
     const snake = new Snake(12, 2)
+    const ladder = new Ladder(3, 13)
 
-    board.placeSnake(snake)
-    expect(board.hasSnake(snake)).toBe(true)
-  })
-
-  it('should allow to place ladders', () => {
-    const token = new Token()
-    const dice = new Dice()
-    const board = new Board(token, dice)
-    const ladder = new Ladder(2, 12)
-
-    board.placeLadder(ladder)
-    expect(board.hasLadder(ladder)).toBe(true)
+    board.place(snake)
+    board.place(ladder)
+    expect(board.has(snake)).toBe(true)
+    expect(board.has(ladder)).toBe(true)
   })
 })
