@@ -69,6 +69,22 @@ describe('Board', () => {
       expect(token.getPosition()).toBe(12)
     })
 
+  it('should not move token to position 12 when token arrives at position 12' +
+    ' and there is a ladder connecting 2 and 12', () => {
+
+      const token = new Token(11)
+      const dice = new Dice()
+      const board = new Board(token, dice)
+      const ladder = new Ladder(2, 12)
+
+      const rollSpy = jest.spyOn(dice, 'roll')
+      rollSpy.mockReturnValue(1)
+
+      board.place(ladder)
+      board.moveToken()
+      expect(token.getPosition()).toBe(12)
+    })
+
   it('should allow to place figures', () => {
     const token = new Token()
     const dice = new Dice()
