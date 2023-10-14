@@ -6,16 +6,9 @@ export class Board {
   private readonly token: Token
   private readonly figures: Set<Figure> = new Set()
 
-  constructor(token: Token) {
+  constructor(token: Token, figures: Set<Figure> = new Set()) {
     this.token = token
-  }
-
-  public place(figure: Figure): void {
-    this.figures.add(figure)
-  }
-
-  public has(figure: Figure): boolean {
-    return this.figures.has(figure)
+    this.figures = figures
   }
 
   public rollDice(canRoll: CanRoll): void {
