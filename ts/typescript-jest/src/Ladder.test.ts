@@ -15,4 +15,13 @@ describe('Ladder', () => {
 
     expect(token.getPosition()).toBe(12)
   })
+
+  it('should not move token to top when token lands on top', () => {
+    const token = new Token(12)
+    const ladder = new Ladder(2, 12)
+
+    ladder.applyEffect(token)
+
+    expect(token.getPosition()).toBe(12)
+  })
 })
