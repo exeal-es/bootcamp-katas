@@ -3,29 +3,37 @@ import { Figure } from './Figure'
 import { Token } from './Token'
 
 export class Board {
-  private readonly token: Token
-  private readonly figures: Set<Figure> = new Set()
+  private readonly tokens: Set<Token>
+  private readonly figures: Set<Figure>
+  private tokenWithTurn: Token
 
-  constructor(token: Token, figures: Set<Figure> = new Set()) {
-    this.token = token
+  constructor(tokens: Set<Token> = new Set<Token>([new Token(1)]), figures: Set<Figure> = new Set()) {
     this.figures = figures
+    this.tokens = tokens
+    this.tokenWithTurn = tokens.values().next().value
   }
 
   public rollDice(canRoll: CanRoll): void {
-    this.token.move(canRoll.roll())
-    this.applyFigureEfect(this.token)
+    this.tokenWithTurn.move(canRoll.roll())
+    this.applyFigureEffect(this.tokenWithTurn)
+    this.changeTurn()
   }
 
-  public getTokenPosition(): number {
-    return this.token.getPosition()
+  public getTokenWithTurnPosition(): number {
+    return this.tokenWithTurn.getPosition()
   }
 
   public hasWinner(): boolean {
-    return this.token.hasWon()
+    return Array.from(this.tokens).some((token) => token.hasWon())
   }
 
-  private applyFigureEfect(token: Token): void {
+  private applyFigureEffect(token: Token): void {
     Array.from(this.figures).filter((figure) => figure.affects(token))
       .forEach((figure) => figure.applyEffect(token))
+  }
+
+  private changeTurn(): void {
+    const tokens = Array.from(this.tokens)
+    this.tokenWithTurn = tokens[(tokens.indexOf(this.tokenWithTurn) + 1) % tokens.length]
   }
 }
