@@ -8,8 +8,8 @@ export class Game {
         this.board = board
     }
 
-    public throwDice(canRoll: CanRoll): void {
-        return this.board.throwDice(canRoll)
+    public rollDice(canRoll: CanRoll): void {
+        return this.board.rollDice(canRoll)
     }
 
     public getTokenPosition(): number {

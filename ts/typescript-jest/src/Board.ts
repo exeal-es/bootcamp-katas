@@ -18,7 +18,7 @@ export class Board {
     return this.figures.has(figure)
   }
 
-  public throwDice(canRoll: CanRoll): void {
+  public rollDice(canRoll: CanRoll): void {
     this.token.move(canRoll.roll())
     this.applyFigureEfect(this.token)
   }

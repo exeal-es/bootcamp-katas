@@ -9,7 +9,7 @@ describe('Game', () => {
     const board = new Board(token)
     const game = new Game(board)
 
-    game.throwDice(new FakeDice(4))
+    game.rollDice(new FakeDice(4))
     expect(token.getPosition()).toBe(5)
   })
 })

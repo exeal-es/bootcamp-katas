@@ -13,7 +13,7 @@ describe('Board', () => {
       const snake = new Snake(12, 2)
 
       board.place(snake)
-      board.throwDice(new FakeDice(2))
+      board.rollDice(new FakeDice(2))
       expect(token.getPosition()).toBe(2)
     })
 
@@ -25,7 +25,7 @@ describe('Board', () => {
       const snake = new Snake(15, 3)
 
       board.place(snake)
-      board.throwDice(new FakeDice(2))
+      board.rollDice(new FakeDice(2))
       expect(token.getPosition()).toBe(3)
     })
 
@@ -37,7 +37,7 @@ describe('Board', () => {
       const snake = new Snake(12, 2)
 
       board.place(snake)
-      board.throwDice(new FakeDice(1))
+      board.rollDice(new FakeDice(1))
       expect(token.getPosition()).toBe(2)
     })
 
@@ -49,7 +49,7 @@ describe('Board', () => {
       const ladder = new Ladder(2, 12)
 
       board.place(ladder)
-      board.throwDice(new FakeDice(1))
+      board.rollDice(new FakeDice(1))
       expect(token.getPosition()).toBe(12)
     })
 
@@ -61,7 +61,7 @@ describe('Board', () => {
       const ladder = new Ladder(2, 12)
 
       board.place(ladder)
-      board.throwDice(new FakeDice(1))
+      board.rollDice(new FakeDice(1))
       expect(token.getPosition()).toBe(12)
     })
 
