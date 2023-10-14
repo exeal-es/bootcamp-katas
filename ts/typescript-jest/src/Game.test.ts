@@ -1,7 +1,6 @@
 import { Board } from './Board'
 import { FakeDice } from './FakeDice'
 import { Game } from './Game'
-import { RandomDice } from './RandomDice'
 import { Token } from './Token'
 
 describe('Game', () => {
@@ -12,6 +11,5 @@ describe('Game', () => {
 
     game.throwDice(new FakeDice(4))
     expect(token.getPosition()).toBe(5)
-
   })
 })
