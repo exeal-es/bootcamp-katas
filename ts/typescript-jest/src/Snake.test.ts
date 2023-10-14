@@ -15,4 +15,13 @@ describe('Snake', () => {
 
     expect(token.getPosition()).toBe(2)
   })
+
+  it('should not move token to tail when token lands on tail', () => {
+    const token = new Token(2)
+    const snake = new Snake(12, 2)
+
+    snake.applyEffect(token)
+
+    expect(token.getPosition()).toBe(2)
+  })
 })
