@@ -8,7 +8,7 @@ describe('Snakes', () => {
   })
 
   describe('Snakes', () => {
-    it('should go down if is a snake', () => {
+    it('should is on same position if is not a snake', () => {
       const snake = new Snakes()
       expect(snake.checkSnakes(2)).toBe(2)
   })
