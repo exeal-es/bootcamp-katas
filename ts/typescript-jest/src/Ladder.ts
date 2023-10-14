@@ -24,15 +24,11 @@ export class Ladder implements Figure {
     }
   }
 
-  public hasBottomIn(tokenPosition: number): boolean {
-    return this.bottom === tokenPosition
-  }
-
-  public getTopPosition(): number {
-    return this.top
-  }
-
   public equals(ladder: Ladder): boolean {
     return this.connects(ladder.bottom, ladder.top)
+  }
+
+  private hasBottomIn(tokenPosition: number): boolean {
+    return this.bottom === tokenPosition
   }
 }
