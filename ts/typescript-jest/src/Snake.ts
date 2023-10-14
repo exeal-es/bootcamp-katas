@@ -24,15 +24,11 @@ export class Snake implements Figure {
     }
   }
 
-  public hasHeadIn(position: number): boolean {
-    return this.head === position
-  }
-
-  public getTailPosition(): number {
-    return this.tail
-  }
-
   public equals(snake: Snake): boolean {
     return this.connects(snake.head, snake.tail)
+  }
+
+  private hasHeadIn(position: number): boolean {
+    return this.head === position
   }
 }
