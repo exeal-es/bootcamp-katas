@@ -2,21 +2,32 @@ import { Board } from './Board'
 import { CanRoll } from './CanRoll'
 import { Token } from './Token'
 
-export class Game {
-  private readonly token1: Token
-  private readonly token2: Token
+type Pair<T, K> = [T, K];
+type Pairs<T, K> = Pair<T, K>[];
 
-  constructor(token1: Token, token2: Token) {
-    this.token1 = token1
-    this.token2 = token2
+export class Game {
+  private readonly startingRollResult: Map<number, Token>
+  private readonly tokens: Token[]
+
+  constructor(tokens: Token[]) {
+    this.tokens = tokens
+    this.startingRollResult = new Map()
   }
 
   public start(canRoll: CanRoll): Board | undefined {
-    const token1RollResult = canRoll.roll()
-    const token2RollResult = canRoll.roll()
-    if (token1RollResult === token2RollResult) {
+    const rollResults: Pairs<number, Token> = []
+    const tokensWithoutRollResults = this.tokens.filter(token => !Array.from(this.startingRollResult.values()).some(t => t === token))
+    tokensWithoutRollResults.forEach(token => {
+      const rollResult = canRoll.roll()
+      rollResults.push([rollResult, token])
+    })
+    const differentRollResults: Pairs<number, Token> =
+      rollResults.filter(([rollResult, token]) => !rollResults.some(([r, t]) => r === rollResult && t !== token))
+    differentRollResults.forEach(([rollResult, token]) => this.startingRollResult.set(rollResult, token))
+    if (this.startingRollResult.size !== this.tokens.length) {
       return undefined
     }
-    return new Board(new Set(token1RollResult > token2RollResult ? [this.token1, this.token2] : [this.token2, this.token1]))
+    const tokens = new Set(Array.from(this.startingRollResult.entries()).sort((a, b) => b[0] - a[0]).map(e => e[1]))
+    return new Board(tokens)
   }
 }
