@@ -14,7 +14,7 @@ export class Game {
     this.startingRollResult = new Map()
   }
 
-  public start(canRoll: CanRoll): Board | undefined {
+  public determinePlayOrder(canRoll: CanRoll): Board | undefined {
     const rollResults: Pairs<number, Token> = []
     const tokensWithoutRollResults = this.tokens.filter(token => !Array.from(this.startingRollResult.values()).some(t => t === token))
     tokensWithoutRollResults.forEach(token => {

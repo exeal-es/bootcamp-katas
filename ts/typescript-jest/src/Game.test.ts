@@ -51,7 +51,7 @@ describe("Game", () => {
     const game = new Game([token1, token2])
     const dice = new FakeDice(1)
 
-    const board = game.start(dice)
+    const board = game.determinePlayOrder(dice)
 
     expect(board).toBeUndefined()
   })
@@ -63,7 +63,7 @@ describe("Game", () => {
     const game = new Game([token1, token2])
     const dice = new DecrementalDiceResult()
 
-    const board = game.start(dice)
+    const board = game.determinePlayOrder(dice)
     board.rollDice(new FakeDice(1))
 
     expect(token1.getPosition()).toBe(2)
@@ -76,7 +76,7 @@ describe("Game", () => {
     const game = new Game([token1, token2])
     const dice = new IncrementalDiceResult()
 
-    const board = game.start(dice)
+    const board = game.determinePlayOrder(dice)
     board.rollDice(new FakeDice(1))
 
     expect(token1.getPosition()).toBe(1)
@@ -95,9 +95,9 @@ describe("Game", () => {
       numOfRoll === 1 || numOfRoll === 2 ? fakeDice : incrementDiceResult
     )
 
-    let board = game.start(dice)
+    let board = game.determinePlayOrder(dice)
     expect(board).toBeUndefined()
-    board = game.start(incrementDiceResult)
+    board = game.determinePlayOrder(incrementDiceResult)
     expect(board).toBeDefined()
   })
 })
