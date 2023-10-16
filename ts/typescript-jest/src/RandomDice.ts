@@ -1,6 +1,6 @@
-import { CanRoll } from './CanRoll'
+import { Dice } from './CanRoll'
 
-export class RandomDice implements CanRoll {
+export class RandomDice implements Dice {
   private readonly min: number
   private readonly max: number
 

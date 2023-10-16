@@ -1,9 +1,9 @@
-import { CanRoll } from './CanRoll'
+import { Dice } from './CanRoll'
 import { FakeDice } from './FakeDice'
 import { Game } from './Game'
 import { Token } from './Token'
 
-class IncrementalDiceResult implements CanRoll {
+class IncrementalDiceResult implements Dice {
   private currentResult: number = 1
 
   constructor(startAt: number = 1) {
@@ -17,7 +17,7 @@ class IncrementalDiceResult implements CanRoll {
   }
 }
 
-class DecrementalDiceResult implements CanRoll {
+class DecrementalDiceResult implements Dice {
   private currentResult: number = 6
 
   constructor(startAt: number = 6) {
@@ -31,11 +31,11 @@ class DecrementalDiceResult implements CanRoll {
   }
 }
 
-class CustomDiceResult implements CanRoll {
-  private readonly customResult: (numOfRoll) => CanRoll
+class CustomDiceResult implements Dice {
+  private readonly customResult: (numOfRoll) => Dice
   private callCount: number = 0
 
-  constructor(customResult: (numOfRoll) => CanRoll) {
+  constructor(customResult: (numOfRoll) => Dice) {
     this.customResult = customResult
   }
 

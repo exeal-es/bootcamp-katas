@@ -1,3 +1,3 @@
-export interface CanRoll {
+export interface Dice {
   roll(): number
 }

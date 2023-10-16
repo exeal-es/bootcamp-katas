@@ -1,9 +1,9 @@
 import { Board } from './Board'
-import { CanRoll } from './CanRoll'
+import { Dice } from './CanRoll'
 
 import { UserInputReader } from './UserInputReader'
 
-export async function play(board: Board, canRoll: CanRoll, reader: UserInputReader): Promise<void> {
+export async function play(board: Board, canRoll: Dice, reader: UserInputReader): Promise<void> {
   do {
     console.log(`Pulsa enter para tirar el dado`)
     await reader.askUserToRollDice()

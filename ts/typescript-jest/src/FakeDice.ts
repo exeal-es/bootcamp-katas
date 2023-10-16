@@ -1,6 +1,6 @@
-import { CanRoll } from './CanRoll'
+import { Dice } from './CanRoll'
 
-export class FakeDice implements CanRoll {
+export class FakeDice implements Dice {
   private readonly value: number
 
   constructor(value: number) {

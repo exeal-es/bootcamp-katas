@@ -1,5 +1,5 @@
 import { Board } from './Board'
-import { CanRoll } from './CanRoll'
+import { Dice } from './CanRoll'
 import { Token } from './Token'
 
 type Pair<T, K> = [T, K];
@@ -14,11 +14,11 @@ export class Game {
     this.startingRollResult = new Map()
   }
 
-  public determinePlayOrder(canRoll: CanRoll): Board | undefined {
+  public determinePlayOrder(dice: Dice): Board | undefined {
     const rollResults: Pairs<number, Token> = []
     const tokensWithoutRollResults = this.tokens.filter(token => !Array.from(this.startingRollResult.values()).some(t => t === token))
     tokensWithoutRollResults.forEach(token => {
-      const rollResult = canRoll.roll()
+      const rollResult = dice.roll()
       rollResults.push([rollResult, token])
     })
     const differentRollResults: Pairs<number, Token> =

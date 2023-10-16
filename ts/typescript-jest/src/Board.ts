@@ -1,4 +1,4 @@
-import { CanRoll } from './CanRoll'
+import { Dice } from './CanRoll'
 import { Figure } from './Figure'
 import { Token } from './Token'
 
@@ -13,7 +13,7 @@ export class Board {
     this.tokenWithTurn = tokens.values().next().value
   }
 
-  public rollDice(canRoll: CanRoll): void {
+  public rollDice(canRoll: Dice): void {
     this.tokenWithTurn.move(canRoll.roll())
     this.applyFigureEffect(this.tokenWithTurn)
     this.changeTurn()
