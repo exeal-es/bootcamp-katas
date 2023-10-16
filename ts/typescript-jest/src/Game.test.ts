@@ -11,9 +11,9 @@ class IncrementalDiceResult implements Dice {
   }
 
   public roll(): number {
-    const result = this.currentResult;
-    this.currentResult++;
-    return result;
+    const result = this.currentResult
+    this.currentResult++
+    return result
   }
 }
 
@@ -25,9 +25,9 @@ class DecrementalDiceResult implements Dice {
   }
 
   public roll(): number {
-    const result = this.currentResult;
-    this.currentResult--;
-    return result;
+    const result = this.currentResult
+    this.currentResult--
+    return result
   }
 }
 
@@ -44,8 +44,8 @@ class CustomDiceResult implements Dice {
   }
 }
 
-describe("Game", () => {
-  it("should not start when players get same result at game start", () => {
+describe('Game', () => {
+  it('should not start when players get same result at game start', () => {
     const token1 = new Token(1)
     const token2 = new Token(1)
     const game = new Game([token1, token2])
@@ -56,8 +56,7 @@ describe("Game", () => {
     expect(board).toBeUndefined()
   })
 
-
-  it("should start with player 1 when gets the highest number at game start", () => {
+  it('should start with player 1 when gets the highest number at game start', () => {
     const token1 = new Token(1)
     const token2 = new Token(1)
     const game = new Game([token1, token2])
@@ -70,7 +69,7 @@ describe("Game", () => {
     expect(token2.getPosition()).toBe(1)
   })
 
-  it("should start with player 2 when gets the highest number at game start", () => {
+  it('should start with player 2 when gets the highest number at game start', () => {
     const token1 = new Token(1)
     const token2 = new Token(1)
     const game = new Game([token1, token2])
@@ -83,7 +82,7 @@ describe("Game", () => {
     expect(token2.getPosition()).toBe(2)
   })
 
-  it("should force to roll the dice again when there is a tie", () => {
+  it('should force to roll the dice again when there is a tie', () => {
     const token1 = new Token(1)
     const token2 = new Token(1)
     const token3 = new Token(1)

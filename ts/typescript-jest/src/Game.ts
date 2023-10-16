@@ -2,8 +2,8 @@ import { Board } from './Board'
 import { Dice } from './CanRoll'
 import { Token } from './Token'
 
-type Pair<T, K> = [T, K];
-type Pairs<T, K> = Pair<T, K>[];
+type Pair<T, K> = [T, K]
+type Pairs<T, K> = Array<Pair<T, K>>
 
 export class Game {
   private readonly startingRollResult: Map<number, Token>
@@ -16,8 +16,9 @@ export class Game {
 
   public determinePlayOrder(dice: Dice): Board | undefined {
     const rollResults: Pairs<number, Token> = []
-    const tokensWithoutRollResults = this.tokens.filter(token => !Array.from(this.startingRollResult.values()).some(t => t === token))
-    tokensWithoutRollResults.forEach(token => {
+    const tokensWithoutRollResults =
+      this.tokens.filter((token) => !Array.from(this.startingRollResult.values()).some((t) => t === token))
+    tokensWithoutRollResults.forEach((token) => {
       const rollResult = dice.roll()
       rollResults.push([rollResult, token])
     })
@@ -27,7 +28,7 @@ export class Game {
     if (this.startingRollResult.size !== this.tokens.length) {
       return undefined
     }
-    const tokens = new Set(Array.from(this.startingRollResult.entries()).sort((a, b) => b[0] - a[0]).map(e => e[1]))
+    const tokens = new Set(Array.from(this.startingRollResult.entries()).sort((a, b) => b[0] - a[0]).map((e) => e[1]))
     return new Board(tokens)
   }
 }
