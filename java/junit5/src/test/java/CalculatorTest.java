@@ -10,4 +10,9 @@ class CalculatorTest {
         final Calculator calculator = new Calculator("Hello World!");
         assertThat(calculator.getMessage()).isEqualTo("Hello World!");
     }
+    @Test
+    void it_should_return_total() {
+        final Calculator calculator = new Calculator("Hello World!");
+        assertThat(calculator.getTotal()).isEqualTo(1.0);
+    }
 }

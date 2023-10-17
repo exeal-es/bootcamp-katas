@@ -8,4 +8,5 @@ public class Calculator {
     public String getMessage(){
         return message;
     }
-}
+
+    public Double getTotal(){return 1.0;}}
