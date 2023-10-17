@@ -11,9 +11,9 @@ public class Main {
         System.out.println("Introduce el numero de items del objeto: ");
         int items = scanner.nextInt();
 
-        int total = calculator.getTotal(items, price);
+        double total = calculator.getTotalUtah(items, price);
 
-        System.out.println("El precio total es: " + total);
+        System.out.println("El precio total es para Utah: " + total);
 
     }
 }
