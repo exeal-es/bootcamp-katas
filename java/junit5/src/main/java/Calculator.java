@@ -10,4 +10,8 @@ public class Calculator {
     public double getTotalUtah(int items, int price) {
         return items * price * 1.0685;
     }
+
+    public double getTotalNv(int items, int price) {
+        return items * price * 1.08;
+    }
 }

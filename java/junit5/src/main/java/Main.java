@@ -11,9 +11,16 @@ public class Main {
         System.out.println("Introduce el numero de items del objeto: ");
         int items = scanner.nextInt();
 
-        double total = calculator.getTotalUtah(items, price);
+        System.out.println("Introduce su estado: UT (1) o NV (2)");
+        int state = scanner.nextInt();
 
-        System.out.println("El precio total es para Utah: " + total);
+        if (state == 1) {
+            double total = calculator.getTotalUtah(items, price);
+            System.out.println("El precio total es para Utah: " + total);
+        } else {
+            double total = calculator.getTotalNv(items, price);
+            System.out.println("El precio total es para Nevada: " + total);
+        }
 
     }
 }
