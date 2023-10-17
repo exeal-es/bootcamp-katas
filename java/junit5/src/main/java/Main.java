@@ -7,7 +7,11 @@ public class Main {
         Calculator calculator = new Calculator();
 
         int price = scanner.nextInt();
-        int total = calculator.getTotal(price);
+
+        System.out.println("Introduce el numero de items del objeto: ");
+        int items = scanner.nextInt();
+
+        int total = calculator.getTotal(items, price);
 
         System.out.println("El precio total es: " + total);
 
