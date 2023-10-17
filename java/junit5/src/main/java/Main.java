@@ -6,7 +6,10 @@ public final class Main {
     Scanner scanner = new Scanner(System.in);
     Integer numItems = scanner.nextInt();
 
-    final Calculator calculator = new Calculator(numItems);
+    System.out.println("Introduce el precio de items:");
+    Double itemPrice = scanner.nextDouble();
+
+    final Calculator calculator = new Calculator(numItems, itemPrice);
     System.out.println("El total de la compra es: " + calculator.getTotal());
   }
 }
