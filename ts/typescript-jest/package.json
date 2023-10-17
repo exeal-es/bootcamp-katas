@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "Charles Ahmadzadeh <superzadeh@outlook.com>",
+    "type": "module",
   "scripts": {
     "check-types": "yarn compile:ts --noEmit",
     "test": "cross-env NODE_ENV=test jest",
