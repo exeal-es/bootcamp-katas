@@ -1,12 +1,11 @@
 public class Calculator {
-    private final String message;
+  private final Integer numItems;
 
-    public Calculator(String message){
-        this.message = message;
-    }
+  public Calculator(final Integer numItems) {
+    this.numItems = numItems;
+  }
 
-    public String getMessage(){
-        return message;
-    }
-
-    public Double getTotal(){return 1.0;}}
+  public Double getTotal() {
+    return numItems * 1.0;
+  }
+}
