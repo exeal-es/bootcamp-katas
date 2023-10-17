@@ -10,4 +10,10 @@ class CalculatorTest {
         final Calculator calculator = new Calculator(2, 20.0, 0.0685);
         assertThat(calculator.getTotal()).isEqualTo(42.74);
     }
+
+    @Test
+    void it_should_return_total_with_state_taxes() {
+        final Calculator calculator = new Calculator(2, 20.0, "NV");
+        assertThat(calculator.getTotal()).isEqualTo(43.2);
+    }
 }
