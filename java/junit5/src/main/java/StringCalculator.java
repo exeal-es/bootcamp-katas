@@ -1,9 +1,6 @@
 public class StringCalculator {
 
     public static int add(String numbers) {
-        if (numbers.equals("1")){
-            return 1;
-        }
-        return 0;
+        return numbers.equals("1") ? 1 : 0;
     }
 }
