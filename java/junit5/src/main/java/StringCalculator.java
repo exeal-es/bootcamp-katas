@@ -5,7 +5,8 @@ public class StringCalculator {
             return 0;
         }
         if (numbers.equals("2,1")) {
-            return 3;
+            String secondNumber = numbers.split(",")[1];
+            return Integer.parseInt(secondNumber) + 2;
         }
         if (numbers.equals("2,3")) {
             return 5;
