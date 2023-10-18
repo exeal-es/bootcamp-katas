@@ -1,11 +1,9 @@
 public class StringCalculator {
 
     public static int add(String numbers) {
-        switch (numbers) {
-            case "":
-                return 0;
-            default:
-                return Integer.parseInt(numbers);
-        }
+      if (numbers.isEmpty()) {
+        return 0;
+      }
+      return Integer.parseInt(numbers);
     }
 }
