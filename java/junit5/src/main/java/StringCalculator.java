@@ -1,9 +1,13 @@
 public class StringCalculator {
 
     public static int add(String numbers) {
-        if (numbers.equals("2")) {
-            return 2;
+        switch (numbers) {
+            case "2":
+                return 2;
+            case "1":
+                return 1;
+            default:
+                return 0;
         }
-        return numbers.equals("1") ? 1 : 0;
     }
 }
