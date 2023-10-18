@@ -45,4 +45,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(4);
     }
+
+    @Test
+    void it_should_return_the_add_from_string_with_3comma2(){
+        String numbers = "3,2";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(5);
+    }
 }
