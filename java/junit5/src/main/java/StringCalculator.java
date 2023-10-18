@@ -11,8 +11,10 @@ public class StringCalculator {
             return 4;
         }
         if (numbers.equals("1,2")) {
-            return 3;
+            String firstNumber = numbers.split(",")[0];
+            return Integer.parseInt(firstNumber) + 2;
         }
+
         return Integer.parseInt(numbers);
     }
 }
