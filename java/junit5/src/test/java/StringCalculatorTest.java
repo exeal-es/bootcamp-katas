@@ -12,7 +12,6 @@ class StringCalculatorTest {
 
         int result = StringCalculator.add(numbers);
 
-        assertThat(result)
-                .isEqualTo(expectedResult);
+        assertThat(result).isEqualTo(expectedResult);
     }
 }
