@@ -10,12 +10,14 @@ public class StringCalculator {
             return Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
         }
         if (numbers.contains("2,")) {
+            String firstNumber = numbers.split(",")[0];
             String secondNumber = numbers.split(",")[1];
-            return Integer.parseInt(secondNumber) + 2;
+            return Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
         }
         if (numbers.contains(",2")) {
             String firstNumber = numbers.split(",")[0];
-            return Integer.parseInt(firstNumber) + 2;
+            String secondNumber = numbers.split(",")[1];
+            return Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
         }
         return Integer.parseInt(numbers);
     }
