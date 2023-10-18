@@ -13,4 +13,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void it_should_return_1_when_string_is_1(){
+        String numbers = "1";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(1);
+    }
 }
