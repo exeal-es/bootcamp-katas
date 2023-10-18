@@ -1,7 +1,11 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,30 +32,22 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(expectedResult);
     }
 
-    @Test
-    void it_should_return_the_add_from_string_with_1comma2(){
-        String numbers = "1,2";
 
-        int result = StringCalculator.add(numbers);
-
-        assertThat(result).isEqualTo(3);
+    private static Stream<Arguments> firstNumberPlusTwoTestParameters() {
+        return Stream.of(
+                Arguments.of("1,2", 3),
+                Arguments.of("2,2", 4),
+                Arguments.of("3,2", 5)
+        );
     }
 
-    @Test
-    void it_should_return_the_add_from_string_with_2comma2(){
-        String numbers = "2,2";
+    @ParameterizedTest
+    @MethodSource("firstNumberPlusTwoTestParameters")
+    void it_should_return_the_sum_of_first_number_plus_two(final String number,
+                                                    final Integer expectedResult) {
 
-        int result = StringCalculator.add(numbers);
+        int result = StringCalculator.add(number);
 
-        assertThat(result).isEqualTo(4);
-    }
-
-    @Test
-    void it_should_return_the_add_from_string_with_3comma2(){
-        String numbers = "3,2";
-
-        int result = StringCalculator.add(numbers);
-
-        assertThat(result).isEqualTo(5);
+        assertThat(result).isEqualTo(expectedResult);
     }
 }
