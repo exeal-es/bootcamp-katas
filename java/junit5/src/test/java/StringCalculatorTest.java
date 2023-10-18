@@ -77,4 +77,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void it_should_return_the_sum_of_5_plus_7() {
+        String numbers = "5,7";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(12);
+    }
 }
