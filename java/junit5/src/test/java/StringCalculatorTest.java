@@ -59,4 +59,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    void it_should_return_the_sum_of_2_plus_3() {
+        String numbers = "2,3";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(5);
+    }
 }
