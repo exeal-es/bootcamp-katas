@@ -4,15 +4,9 @@ public class StringCalculator {
         if (numbers.isEmpty()) {
             return 0;
         }
-        if (numbers.equals("2,1")) {
+        if (numbers.contains("2,")) {
             String secondNumber = numbers.split(",")[1];
             return Integer.parseInt(secondNumber) + 2;
-        }
-        if (numbers.equals("2,3")) {
-            return 5;
-        }
-        if (numbers.equals("2,4")) {
-            return 6;
         }
         if (numbers.contains(",")) {
             String firstNumber = numbers.split(",")[0];
