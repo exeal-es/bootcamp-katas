@@ -27,4 +27,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(expectedResult);
     }
+    
+    @Test
+    void it_should_return_the_add_from_string_with_1comma2(){
+        String numbers = "1,2";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(3);
+    }
 }
