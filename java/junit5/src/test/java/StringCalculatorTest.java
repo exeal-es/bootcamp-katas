@@ -68,4 +68,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    void it_should_return_the_sum_of_2_plus_4() {
+        String numbers = "2,4";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(6);
+    }
 }
