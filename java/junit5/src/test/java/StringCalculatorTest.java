@@ -7,10 +7,10 @@ class StringCalculatorTest {
 
     @Test
     void it_should_return_zero_when_string_empty() {
-        String input = "";
+        String numbers = "";
         int expectedResult = 0;
 
-        int result = StringCalculator.add(input);
+        int result = StringCalculator.add(numbers);
 
         assertThat(result)
                 .isEqualTo(expectedResult);
