@@ -50,4 +50,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    void it_should_return_the_sum_of_2_plus_1() {
+        String numbers = "2,1";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(3);
+    }
 }
