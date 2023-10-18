@@ -31,4 +31,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    void it_should_return_3_when_string_is_3(){
+        String numbers = "3";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(3);
+    }
 }
