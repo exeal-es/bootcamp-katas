@@ -22,4 +22,13 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    void it_should_return_2_when_string_is_2(){
+        String numbers = "2";
+
+        int result = StringCalculator.add(numbers);
+
+        assertThat(result).isEqualTo(2);
+    }
 }
