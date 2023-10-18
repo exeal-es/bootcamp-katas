@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -14,30 +18,13 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
-    @Test
-    void it_should_return_1_when_string_is_1(){
-        String numbers = "1";
+    @ParameterizedTest
+    @CsvSource({"1,1", "2,2", "3,3"})
+    void it_should_return_the_number_representation(final String number,
+        final Integer expectedResult) {
 
-        int result = StringCalculator.add(numbers);
+        int result = StringCalculator.add(number);
 
-        assertThat(result).isEqualTo(1);
-    }
-
-    @Test
-    void it_should_return_2_when_string_is_2(){
-        String numbers = "2";
-
-        int result = StringCalculator.add(numbers);
-
-        assertThat(result).isEqualTo(2);
-    }
-
-    @Test
-    void it_should_return_3_when_string_is_3(){
-        String numbers = "3";
-
-        int result = StringCalculator.add(numbers);
-
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(expectedResult);
     }
 }
