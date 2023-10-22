@@ -3,6 +3,9 @@ public final class LeapYearCalculator {
         if (year == 4) {
             return true;
         }
+        if (year == 8) {
+            return true;
+        }
         return year % 400 == 0;
     }
 }

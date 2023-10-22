@@ -37,4 +37,14 @@ class LeapYearTest {
 
         assertThat(isLeapYear).isTrue();
     }
+
+    @Test
+    public void should_return_leap_year_for_year_8() {
+        final int year = 8;
+
+        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
+        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
+
+        assertThat(isLeapYear).isTrue();
+    }
 }
