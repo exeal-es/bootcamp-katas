@@ -38,34 +38,4 @@ class LeapYearTest {
 
         assertThat(isLeapYear).isEqualTo(expectedResult);
     }
-
-    @Test
-    public void should_return_leap_year_for_year_4() {
-        final int year = 4;
-
-        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
-        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
-
-        assertThat(isLeapYear).isTrue();
-    }
-
-    @Test
-    public void should_return_leap_year_for_year_8() {
-        final int year = 8;
-
-        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
-        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
-
-        assertThat(isLeapYear).isTrue();
-    }
-
-    @Test
-    public void should_return_leap_year_for_year_12() {
-        final int year = 12;
-
-        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
-        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
-
-        assertThat(isLeapYear).isTrue();
-    }
 }
