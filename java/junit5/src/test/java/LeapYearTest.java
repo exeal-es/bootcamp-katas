@@ -29,7 +29,7 @@ class LeapYearTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"4, true", "8, true", "12, true"})
+    @CsvSource({"4, true", "8, true", "12, true", "1900, false"})
     public void should_return_leap_year_for_years_divisible_by_4_and_not_for_100(final int year,
         final boolean expectedResult) {
 
