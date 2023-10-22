@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LeapYearTest {
 
     @ParameterizedTest
-    @CsvSource({"400, true", "800, true", "2000, true"})
+    @CsvSource({"400, true", "800, true", "2000, true", "401, false"})
     public void should_return_leap_year_for_years_divisible_by_400(final int year,
         final boolean expectedResult) {
 
