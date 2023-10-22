@@ -38,4 +38,15 @@ class LeapYearTest {
 
         assertThat(isLeapYear).isEqualTo(expectedResult);
     }
+
+    @ParameterizedTest
+    @CsvSource({"2023, false", "2027, false", "2031, false", "2025, false"})
+    public void should_not_return_leap_year_for_years_not_divisible_by_4(final int year,
+        final boolean expectedResult) {
+
+        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
+        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
+
+        assertThat(isLeapYear).isEqualTo(expectedResult);
+    }
 }
