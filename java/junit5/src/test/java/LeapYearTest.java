@@ -18,18 +18,19 @@ class LeapYearTest {
         assertThat(isLeapYear).isEqualTo(expectedResult);
     }
 
-    @Test
-    public void should_not_return_leap_year_for_year_100() {
-        final int year = 100;
+    @ParameterizedTest
+    @CsvSource({"1700, false", "1800, false", "1900, false", "2100, false"})
+    public void should_not_return_leap_year_for_years_divisible_by_100_and_not_for_400(final int year,
+        final boolean expectedResult) {
 
         final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
         final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
 
-        assertThat(isLeapYear).isFalse();
+        assertThat(isLeapYear).isEqualTo(expectedResult);
     }
 
     @ParameterizedTest
-    @CsvSource({"4, true", "8, true", "12, true", "1900, false"})
+    @CsvSource({"4, true", "8, true", "12, true"})
     public void should_return_leap_year_for_years_divisible_by_4_and_not_for_100(final int year,
         final boolean expectedResult) {
 
