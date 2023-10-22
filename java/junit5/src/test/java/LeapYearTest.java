@@ -17,4 +17,14 @@ class LeapYearTest {
 
         assertThat(isLeapYear).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_not_return_leap_year_for_year_100() {
+        final int year = 100;
+
+        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
+        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
+
+        assertThat(isLeapYear).isFalse();
+    }
 }
