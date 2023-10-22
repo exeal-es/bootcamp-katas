@@ -28,6 +28,17 @@ class LeapYearTest {
         assertThat(isLeapYear).isFalse();
     }
 
+    @ParameterizedTest
+    @CsvSource({"4, true", "8, true", "12, true"})
+    public void should_return_leap_year_for_years_divisible_by_4_and_not_for_100(final int year,
+        final boolean expectedResult) {
+
+        final LeapYearCalculator leapYearCalculator = new LeapYearCalculator();
+        final boolean isLeapYear = leapYearCalculator.isLeapYear(year);
+
+        assertThat(isLeapYear).isEqualTo(expectedResult);
+    }
+
     @Test
     public void should_return_leap_year_for_year_4() {
         final int year = 4;
