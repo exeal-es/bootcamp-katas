@@ -1,11 +1,17 @@
 public class Grid {
 
+	private int width;
+
+	public Grid(int width) {
+		this.width = width;
+	}
+
 	public Grid nextGeneration() {
-		return new Grid();
+		return new Grid(width);
 	}
 
 	public int width() {
-		return 1;
+		return width;
 	}
 
 	public int height() {
