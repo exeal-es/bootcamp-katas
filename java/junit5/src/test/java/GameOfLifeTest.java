@@ -5,7 +5,7 @@ public class GameOfLifeTest {
 
 	@Test
 	public void shouldReturnNextGeneration() {
-		Grid previousGrid = new Grid(1);
+		Grid previousGrid = new Grid(1, 1);
 		Grid grid = previousGrid.nextGeneration();
 		Assertions.assertThat(grid.width())
 			.isEqualTo(1);
@@ -17,9 +17,17 @@ public class GameOfLifeTest {
 
 	@Test
 	public void shouldKeepGridWidth() {
-		Grid previousGrid = new Grid(2);
+		Grid previousGrid = new Grid(2, 1);
 		Grid grid = previousGrid.nextGeneration();
 		Assertions.assertThat(grid.width())
+				.isEqualTo(2);
+	}
+
+	@Test
+	public void shouldKeepGridHeight() {
+		Grid previousGrid = new Grid(2, 2);
+		Grid grid = previousGrid.nextGeneration();
+		Assertions.assertThat(grid.height())
 				.isEqualTo(2);
 	}
 }

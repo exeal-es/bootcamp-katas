@@ -1,13 +1,15 @@
 public class Grid {
 
-	private int width;
+	private final int width;
+	private final int height;
 
-	public Grid(int width) {
+	public Grid(int width, int height) {
 		this.width = width;
+		this.height = height;
 	}
 
 	public Grid nextGeneration() {
-		return new Grid(width);
+		return new Grid(width, height);
 	}
 
 	public int width() {
@@ -15,7 +17,7 @@ public class Grid {
 	}
 
 	public int height() {
-		return 1;
+		return height;
 	}
 
 	public boolean isAlive(int x, int y) {
