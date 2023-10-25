@@ -30,4 +30,17 @@ public class GameOfLifeTest {
 		Assertions.assertThat(grid.height())
 				.isEqualTo(2);
 	}
+
+	@Test
+	public void shouldStayAliveWhenHaveTwoAliveNeighbours() {
+		Grid previousGrid = new Grid(2, 2);
+		previousGrid.setAlive(0, 0);
+		previousGrid.setAlive(0, 1);
+		previousGrid.setAlive(1, 0);
+
+		Grid grid = previousGrid.nextGeneration();
+
+		Assertions.assertThat(grid.isAlive(0, 0)).isEqualTo(true);
+	}
+
 }
