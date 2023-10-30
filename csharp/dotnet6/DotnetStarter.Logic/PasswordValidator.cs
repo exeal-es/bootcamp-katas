@@ -14,7 +14,7 @@ public class PasswordValidator
             }
         }
 
-        if (numbers == 0) return new ValidationResult(false, "The password must contain at least 2 numbers");
+        if (numbers <= 1) return new ValidationResult(false, "The password must contain at least 2 numbers");
 
         if (password.Length < 8)
             return new ValidationResult(false, "Password must be at least 8 characters");
