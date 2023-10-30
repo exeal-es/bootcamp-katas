@@ -5,15 +5,17 @@ public class PasswordValidationShould {
 
 	@Test
 	public void shouldReturnTrue() {
-		boolean result = PasswordValidator.isValid("exealaaaaa");
-		Assertions.assertThat(result)
+		ValidationResult result = PasswordValidator.isValid("exealaaaaa");
+		Assertions.assertThat(result.isValid())
 			.isTrue();
+		Assertions.assertThat(result.errors()).isEmpty();
 	}
 
 	@Test
 
 	public void shouldReturnFalseWhenLengthIsBelow8() {
-		boolean result = PasswordValidator.isValid("exeal");
-		Assertions.assertThat(result).isFalse();
+		ValidationResult result = PasswordValidator.isValid("exeal");
+		Assertions.assertThat(result.isValid()).isFalse();
+		Assertions.assertThat(result.errors()).contains("Password must be at least 8 characters");
 	}
 }
