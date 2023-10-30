@@ -1,36 +1,25 @@
-﻿namespace DotnetStarter.Logic;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace DotnetStarter.Logic;
 
 public sealed class ValidationResult
 {
-    private readonly bool isValid;
-    private string error;
+    private List<string> errors = new();
 
     public ValidationResult(bool isValid)
     {
-        this.isValid = isValid;
-        error = null;
     }
 
-    public ValidationResult(bool isValid, string error)
-    {
-        this.isValid = isValid;
-        this.error = error;
-    }
-
-    public bool IsValid()
-    {
-        return isValid;
-    }
+    public bool IsValid() => !errors.Any();
 
     public string Errors()
     {
-        if (error != null)
-            return error;
-        return "";
+        return string.Join("\n", errors);
     }
 
     public void AddError(string error)
     {
-        this.error = error;
+        this.errors.Add(error);
     }
 }

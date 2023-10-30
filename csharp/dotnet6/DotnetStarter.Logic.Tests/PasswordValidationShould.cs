@@ -39,4 +39,14 @@ public class PasswordValidationShould
         Assert.False(result.IsValid());
         Assert.Contains("The password must contain at least 2 numbers", result.Errors());
     }
+    
+    [Fact]
+    public void ConcatMultipleErrorMessages()
+    {
+        var result = PasswordValidator.IsValid("no1");
+
+        Assert.False(result.IsValid());
+        Assert.Contains("Password must be at least 8 characters", result.Errors());
+        Assert.Contains("The password must contain at least 2 numbers", result.Errors());
+    }
 }

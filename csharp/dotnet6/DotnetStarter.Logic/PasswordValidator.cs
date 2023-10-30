@@ -14,20 +14,18 @@ public class PasswordValidator
             }
         }
 
+        var validationResult = new ValidationResult(false);
+        
         if (numbers <= 1)
         {
-            var validationResult = new ValidationResult(false);
             validationResult.AddError("The password must contain at least 2 numbers");
-            return validationResult;
         }
 
         if (password.Length < 8)
         {
-            var validationResult = new ValidationResult(false);
             validationResult.AddError("Password must be at least 8 characters");
-            return validationResult;
         }
 
-        return new ValidationResult(true);
+        return validationResult;
     }
 }
