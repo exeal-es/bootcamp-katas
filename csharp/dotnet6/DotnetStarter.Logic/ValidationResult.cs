@@ -3,7 +3,7 @@
 public sealed class ValidationResult
 {
     private readonly bool isValid;
-    private readonly string error;
+    private string error;
 
     public ValidationResult(bool isValid)
     {
@@ -27,5 +27,10 @@ public sealed class ValidationResult
         if (error != null)
             return error;
         return "";
+    }
+
+    public void AddError(string error)
+    {
+        this.error = error;
     }
 }
