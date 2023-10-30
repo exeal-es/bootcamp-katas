@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DotnetStarter.Logic;
+﻿namespace DotnetStarter.Logic;
 
 public sealed class ValidationResult
 {
@@ -24,8 +22,10 @@ public sealed class ValidationResult
         return isValid;
     }
 
-    public List<string> Errors()
+    public string Errors()
     {
-        return error == null ? new List<string>() : new List<string> { error };
+        if (error != null)
+            return error;
+        return "";
     }
 }
