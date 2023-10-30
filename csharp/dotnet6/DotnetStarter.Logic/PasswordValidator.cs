@@ -14,7 +14,7 @@ public class PasswordValidator
             }
         }
 
-        var validationResult = new ValidationResult(false);
+        var validationResult = new ValidationResult();
         
         if (numbers <= 1)
         {

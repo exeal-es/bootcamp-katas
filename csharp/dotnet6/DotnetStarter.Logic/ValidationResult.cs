@@ -5,21 +5,11 @@ namespace DotnetStarter.Logic;
 
 public sealed class ValidationResult
 {
-    private List<string> errors = new();
-
-    public ValidationResult(bool isValid)
-    {
-    }
+    private readonly List<string> errors = new();
 
     public bool IsValid() => !errors.Any();
 
-    public string Errors()
-    {
-        return string.Join("\n", errors);
-    }
+    public string Errors() => string.Join("\n", errors);
 
-    public void AddError(string error)
-    {
-        this.errors.Add(error);
-    }
+    public void AddError(string error) => errors.Add(error);
 }
