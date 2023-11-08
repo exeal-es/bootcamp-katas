@@ -3,15 +3,15 @@ import models.Position;
 
 public class Board {
 
-  private boolean mine;
+  private Position mine;
 
   public Board(Dimension dimension) {}
 
   public boolean play(Position position) {
-    return mine;
+    return position.equals(mine);
   }
 
   public void placeMine(Position position) {
-    mine = true;
+    mine = position;
   }
 }

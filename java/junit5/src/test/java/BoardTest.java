@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class BoardTest {
 
   @Test
-  public void shouldReturnIsNotExploded() {
+  public void shouldReturnIsNotExplodedIn1x1Board() {
     // given
     Board board = new Board(new Dimension(1, 1));
 
@@ -18,13 +18,28 @@ public class BoardTest {
   }
 
   @Test
-  public void shouldReturnIsExploded() {
-
+  public void shouldReturnIsExplodedIn1x1Board() {
+    // given
     Board board = new Board(new Dimension(1, 1));
 
+    // when
     board.placeMine(new Position(0, 0));
     boolean hasExploded = board.play(new Position(0, 0));
 
+    // then
     Assertions.assertTrue(hasExploded);
+  }
+
+  @Test
+  public void shouldReturnIsNotExplodedIn2x2Board() {
+    // given
+    Board board = new Board(new Dimension(2, 2));
+
+    // when
+    board.placeMine(new Position(0, 0));
+    boolean hasExploded =  board.play(new Position(1, 1));
+
+    // then
+    Assertions.assertFalse(hasExploded);
   }
 }
