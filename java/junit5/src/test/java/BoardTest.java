@@ -16,5 +16,14 @@ public class BoardTest {
         Assertions.assertFalse(hasExploded);
     }
 
+    @Test
+    public void shouldReturnIsExploded (){
 
+        Board board = new Board(1,1);
+
+        board.placeMine(0,0);
+        boolean hasExploded = board.play(0,0);
+
+        Assertions.assertTrue(hasExploded);
+    }
 }
