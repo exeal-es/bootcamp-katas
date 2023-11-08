@@ -1,3 +1,4 @@
+import models.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ public class BoardTest {
     Board board = new Board(1, 1);
 
     // when
-    boolean hasExploded = board.play(0, 0);
+    boolean hasExploded = board.play(new Position(0, 0));
 
     // then
     Assertions.assertFalse(hasExploded);
@@ -20,8 +21,8 @@ public class BoardTest {
 
     Board board = new Board(1, 1);
 
-    board.placeMine(0, 0);
-    boolean hasExploded = board.play(0, 0);
+    board.placeMine(new Position(0, 0));
+    boolean hasExploded = board.play(new Position(0, 0));
 
     Assertions.assertTrue(hasExploded);
   }
