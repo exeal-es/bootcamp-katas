@@ -1,10 +1,11 @@
+import models.Dimension;
 import models.Position;
 
 public class Board {
 
   private boolean mine;
 
-  public Board(int x, int y) {}
+  public Board(Dimension dimension) {}
 
   public boolean play(Position position) {
     return mine;
