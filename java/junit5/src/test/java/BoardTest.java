@@ -1,10 +1,11 @@
-import org.junit.Assert;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class BoardTest {
 
     @Test
-    public void shouldReturnPosition() {
+    public void shouldReturnIsNotExploded() {
         //given
         Board board = new Board(1,1);
 
@@ -12,6 +13,8 @@ public class BoardTest {
         boolean hasExploded = board.play(0,0);
 
         //then
-        Assert.assertFalse(hasExploded);
+        Assertions.assertFalse(hasExploded);
     }
+
+
 }
