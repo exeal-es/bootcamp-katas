@@ -1,17 +1,20 @@
 import models.Dimension;
 import models.Position;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 
-  private Position mine;
+  private final List<Position> mines;
 
-  public Board(Dimension dimension) {}
+  public Board(Dimension dimension) {
+    mines = new ArrayList<>();
+  }
 
   public boolean play(Position position) {
-    return position.equals(mine);
+    return mines.contains(position);
   }
 
-  public void placeMine(Position position) {
-    mine = position;
-  }
+  public void placeMine(Position position) { mines.add(position); }
 }

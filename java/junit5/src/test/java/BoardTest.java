@@ -42,4 +42,18 @@ public class BoardTest {
     // then
     Assertions.assertFalse(hasExploded);
   }
+
+  @Test
+  public void shouldReturnIsExplodedIn2x2BoardWith2Mines() {
+    // given
+    Board board = new Board(new Dimension(4, 4));
+
+    // when
+    board.placeMine(new Position(0, 0));
+    board.placeMine(new Position(1, 1));
+    boolean hasExploded =  board.play(new Position(0, 0));
+
+    // then
+    Assertions.assertTrue(hasExploded);
+  }
 }
