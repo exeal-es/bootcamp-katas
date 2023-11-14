@@ -39,30 +39,39 @@ public class Game {
 
   public char Winner() {
     if (isRowTaken(0)) {
-      // if first row is full with same symbol
-      if (symbolAt(new Position(0, 0)) == symbolAt(new Position(0, 1))
-          && symbolAt(new Position(0, 2)) == symbolAt(new Position(0, 1))) {
+      if (isFirstRowFullWithSameSymbol()) {
         return symbolAt(new Position(0, 0));
       }
     }
 
     if (isRowTaken(1)) {
-      // if middle row is full with same symbol
-      if (symbolAt(new Position(1, 0)) == symbolAt(new Position(1, 1))
-          && symbolAt(new Position(1, 2)) == symbolAt(new Position(1, 1))) {
+      if (isMiddleRowFullWithSameSymbol()) {
         return symbolAt(new Position(1, 0));
       }
     }
 
     if (isRowTaken(2)) {
-      // if middle row is full with same symbol
-      if (symbolAt(new Position(2, 0)) == symbolAt(new Position(2, 1))
-          && symbolAt(new Position(2, 2)) == symbolAt(new Position(2, 1))) {
+      if (isThirdRowFullWithSameSymbol()) {
         return symbolAt(new Position(2, 0));
       }
     }
 
     return ' ';
+  }
+
+  private boolean isThirdRowFullWithSameSymbol() {
+    return symbolAt(new Position(2, 0)) == symbolAt(new Position(2, 1))
+        && symbolAt(new Position(2, 2)) == symbolAt(new Position(2, 1));
+  }
+
+  private boolean isMiddleRowFullWithSameSymbol() {
+    return symbolAt(new Position(1, 0)) == symbolAt(new Position(1, 1))
+        && symbolAt(new Position(1, 2)) == symbolAt(new Position(1, 1));
+  }
+
+  private boolean isFirstRowFullWithSameSymbol() {
+    return symbolAt(new Position(0, 0)) == symbolAt(new Position(0, 1))
+        && symbolAt(new Position(0, 2)) == symbolAt(new Position(0, 1));
   }
 
   private char symbolAt(Position position) {
