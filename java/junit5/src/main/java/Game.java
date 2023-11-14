@@ -17,7 +17,7 @@ public class Game {
 
   private void ensurePositionIsFree(Position position) throws Exception {
     // if not first move but play on an already played tile
-    if (_board.TileAt(new Position(position.x(), position.y())).Symbol != ' ') {
+    if (symbolAt(new Position(position.x(), position.y())) != ' ') {
       throw new Exception("Invalid position");
     }
   }
@@ -40,29 +40,33 @@ public class Game {
   public char Winner() {
     if (isRowTaken(0)) {
       // if first row is full with same symbol
-      if (_board.TileAt(new Position(0, 0)).Symbol == _board.TileAt(new Position(0, 1)).Symbol
-          && _board.TileAt(new Position(0, 2)).Symbol == _board.TileAt(new Position(0, 1)).Symbol) {
-        return _board.TileAt(new Position(0, 0)).Symbol;
+      if (symbolAt(new Position(0, 0)) == symbolAt(new Position(0, 1))
+          && symbolAt(new Position(0, 2)) == symbolAt(new Position(0, 1))) {
+        return symbolAt(new Position(0, 0));
       }
     }
 
     if (isRowTaken(1)) {
       // if middle row is full with same symbol
-      if (_board.TileAt(new Position(1, 0)).Symbol == _board.TileAt(new Position(1, 1)).Symbol
-          && _board.TileAt(new Position(1, 2)).Symbol == _board.TileAt(new Position(1, 1)).Symbol) {
-        return _board.TileAt(new Position(1, 0)).Symbol;
+      if (symbolAt(new Position(1, 0)) == symbolAt(new Position(1, 1))
+          && symbolAt(new Position(1, 2)) == symbolAt(new Position(1, 1))) {
+        return symbolAt(new Position(1, 0));
       }
     }
 
     if (isRowTaken(2)) {
       // if middle row is full with same symbol
-      if (_board.TileAt(new Position(2, 0)).Symbol == _board.TileAt(new Position(2, 1)).Symbol
-          && _board.TileAt(new Position(2, 2)).Symbol == _board.TileAt(new Position(2, 1)).Symbol) {
-        return _board.TileAt(new Position(2, 0)).Symbol;
+      if (symbolAt(new Position(2, 0)) == symbolAt(new Position(2, 1))
+          && symbolAt(new Position(2, 2)) == symbolAt(new Position(2, 1))) {
+        return symbolAt(new Position(2, 0));
       }
     }
 
     return ' ';
+  }
+
+  private char symbolAt(Position position) {
+    return _board.TileAt(position).Symbol;
   }
 
   private boolean isRowTaken(int x) {
@@ -72,6 +76,6 @@ public class Game {
   }
 
   private boolean isEmpty(Position position) {
-    return !(_board.TileAt(position).Symbol != ' ');
+    return !(symbolAt(position) != ' ');
   }
 }
