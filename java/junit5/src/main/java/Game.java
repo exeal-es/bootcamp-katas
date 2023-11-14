@@ -1,8 +1,10 @@
+import models.Position;
+
 public class Game {
   private char _lastSymbol = ' ';
   private Board _board = new Board();
 
-  public void Play(char symbol, int x, int y) throws Exception {
+  public void Play(char symbol, Position position) throws Exception {
     // if first move
     if (_lastSymbol == ' ' && symbol == 'O') {
       // if player is X
@@ -13,13 +15,13 @@ public class Game {
       throw new Exception("Invalid next player");
     }
     // if not first move but play on an already played tile
-    if (_board.TileAt(x, y).Symbol != ' ') {
+    if (_board.TileAt(position.x(), position.y()).Symbol != ' ') {
       throw new Exception("Invalid position");
     }
 
     // update game state
     _lastSymbol = symbol;
-    _board.AddTileAt(symbol, x, y);
+    _board.AddTileAt(symbol, position.x(), position.y());
   }
 
   public char Winner() {
