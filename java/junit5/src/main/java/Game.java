@@ -38,10 +38,7 @@ public class Game {
   }
 
   public char Winner() {
-    // if the positions in first row are taken
-    if (!isEmpty(new Position(0, 0))
-        && !isEmpty(new Position(0, 1))
-        && !isEmpty(new Position(0, 2))) {
+    if (isRowTaken(0)) {
       // if first row is full with same symbol
       if (_board.TileAt(new Position(0, 0)).Symbol == _board.TileAt(new Position(0, 1)).Symbol
           && _board.TileAt(new Position(0, 2)).Symbol == _board.TileAt(new Position(0, 1)).Symbol) {
@@ -49,8 +46,7 @@ public class Game {
       }
     }
 
-    // if the positions in first row are taken
-    if (isSecondRowTaken()) {
+    if (isRowTaken(1)) {
       // if middle row is full with same symbol
       if (_board.TileAt(new Position(1, 0)).Symbol == _board.TileAt(new Position(1, 1)).Symbol
           && _board.TileAt(new Position(1, 2)).Symbol == _board.TileAt(new Position(1, 1)).Symbol) {
@@ -58,10 +54,7 @@ public class Game {
       }
     }
 
-    // if the positions in first row are taken
-    if (!isEmpty(new Position(2, 0))
-        && !isEmpty(new Position(2, 1))
-        && !isEmpty(new Position(2, 2))) {
+    if (isRowTaken(2)) {
       // if middle row is full with same symbol
       if (_board.TileAt(new Position(2, 0)).Symbol == _board.TileAt(new Position(2, 1)).Symbol
           && _board.TileAt(new Position(2, 2)).Symbol == _board.TileAt(new Position(2, 1)).Symbol) {
@@ -72,10 +65,10 @@ public class Game {
     return ' ';
   }
 
-  private boolean isSecondRowTaken() {
-    return !isEmpty(new Position(1, 0))
-            && !isEmpty(new Position(1, 1))
-            && !isEmpty(new Position(1, 2));
+  private boolean isRowTaken(int x) {
+    return !isEmpty(new Position(x, 0))
+            && !isEmpty(new Position(x, 1))
+            && !isEmpty(new Position(x, 2));
   }
 
   private boolean isEmpty(Position position) {
