@@ -21,7 +21,7 @@ public class Game {
 
     // update game state
     _lastSymbol = symbol;
-    _board.AddTileAt(symbol, position.x(), position.y());
+    _board.AddTileAt(symbol, new Position(position.x(), position.y()));
   }
 
   public char Winner() {

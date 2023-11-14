@@ -27,12 +27,12 @@ public class Board {
     return null;
   }
 
-  public void AddTileAt(char symbol, int x, int y) {
+  public void AddTileAt(char symbol, Position position) {
     Tile newTile = new Tile();
-    newTile.X = x;
-    newTile.Y = y;
+    newTile.X = position.getX();
+    newTile.Y = position.getY();
     newTile.Symbol = symbol;
 
-    TileAt(new Position(x, y)).Symbol = symbol;
+    TileAt(new Position(position.getX(), position.getY())).Symbol = symbol;
   }
 }
