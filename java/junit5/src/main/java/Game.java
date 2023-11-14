@@ -75,6 +75,10 @@ public class Game {
   }
 
   private boolean isNotEmpty(Position position) {
-    return _board.TileAt(position).Symbol != ' ';
+    return !isEmpty(position);
+  }
+
+  private boolean isEmpty(Position position) {
+    return !(_board.TileAt(position).Symbol != ' ');
   }
 }
