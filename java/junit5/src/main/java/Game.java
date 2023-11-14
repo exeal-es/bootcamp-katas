@@ -38,22 +38,16 @@ public class Game {
   }
 
   public char Winner() {
-    if (isRowTaken(0)) {
-      if (isFirstRowFullWithSameSymbol()) {
-        return symbolAt(new Position(0, 0));
-      }
+    if (isRowTaken(0) && isFirstRowFullWithSameSymbol())  {
+      return symbolAt(new Position(0, 0));
     }
 
-    if (isRowTaken(1)) {
-      if (isMiddleRowFullWithSameSymbol()) {
-        return symbolAt(new Position(1, 0));
-      }
+    if (isRowTaken(1) && isMiddleRowFullWithSameSymbol()) {
+      return symbolAt(new Position(1, 0));
     }
 
-    if (isRowTaken(2)) {
-      if (isThirdRowFullWithSameSymbol()) {
-        return symbolAt(new Position(2, 0));
-      }
+    if (isRowTaken(2) && isThirdRowFullWithSameSymbol()) {
+      return symbolAt(new Position(2, 0));
     }
 
     return ' ';
