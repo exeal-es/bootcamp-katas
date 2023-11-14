@@ -36,4 +36,12 @@ public final class Position {
   public String toString() {
     return "Position[" + "x=" + x + ", " + "y=" + y + ']';
   }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
 }

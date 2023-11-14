@@ -1,3 +1,5 @@
+import models.Position;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +18,9 @@ public class Board {
     }
   }
 
-  public Tile TileAt(int x, int y) {
+  public Tile TileAt(Position position) {
     for (Tile t : _plays) {
-      if (t.X == x && t.Y == y) {
+      if (t.X == position.getX() && t.Y == position.getY()) {
         return t;
       }
     }
@@ -31,6 +33,6 @@ public class Board {
     newTile.Y = y;
     newTile.Symbol = symbol;
 
-    TileAt(x, y).Symbol = symbol;
+    TileAt(new Position(x, y)).Symbol = symbol;
   }
 }
