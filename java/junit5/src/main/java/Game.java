@@ -5,23 +5,36 @@ public class Game {
   private Board _board = new Board();
 
   public void Play(char symbol, Position position) throws Exception {
+
+    ensureFirstPlayerIsX(symbol);
+    ensureIsTurnOf(symbol);
+    ensurePositionIsFree(position);
+
+    // update game state
+    _lastSymbol = symbol;
+    _board.AddTileAt(symbol, new Position(position.x(), position.y()));
+  }
+
+  private void ensurePositionIsFree(Position position) throws Exception {
+    // if not first move but play on an already played tile
+    if (_board.TileAt(new Position(position.x(), position.y())).Symbol != ' ') {
+      throw new Exception("Invalid position");
+    }
+  }
+
+  private void ensureIsTurnOf(char symbol) throws Exception {
+    // if not first move but player repeated
+    if (symbol == _lastSymbol) {
+      throw new Exception("Invalid next player");
+    }
+  }
+
+  private void ensureFirstPlayerIsX(char symbol) throws Exception {
     // if first move
     if (_lastSymbol == ' ' && symbol == 'O') {
       // if player is X
       throw new Exception("Invalid first player");
     }
-    // if not first move but player repeated
-    if (symbol == _lastSymbol) {
-      throw new Exception("Invalid next player");
-    }
-    // if not first move but play on an already played tile
-    if (_board.TileAt(new Position(position.x(), position.y())).Symbol != ' ') {
-      throw new Exception("Invalid position");
-    }
-
-    // update game state
-    _lastSymbol = symbol;
-    _board.AddTileAt(symbol, new Position(position.x(), position.y()));
   }
 
   public char Winner() {
