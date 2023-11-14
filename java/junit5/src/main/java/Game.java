@@ -39,9 +39,9 @@ public class Game {
 
   public char Winner() {
     // if the positions in first row are taken
-    if (_board.TileAt(new Position(0, 0)).Symbol != ' '
-        && _board.TileAt(new Position(0, 1)).Symbol != ' '
-        && _board.TileAt(new Position(0, 2)).Symbol != ' ') {
+    if (isNotEmpty(new Position(0, 0))
+        && isNotEmpty(new Position(0, 1))
+        && isNotEmpty(new Position(0, 2))) {
       // if first row is full with same symbol
       if (_board.TileAt(new Position(0, 0)).Symbol == _board.TileAt(new Position(0, 1)).Symbol
           && _board.TileAt(new Position(0, 2)).Symbol == _board.TileAt(new Position(0, 1)).Symbol) {
@@ -50,9 +50,9 @@ public class Game {
     }
 
     // if the positions in first row are taken
-    if (_board.TileAt(new Position(1, 0)).Symbol != ' '
-        && _board.TileAt(new Position(1, 1)).Symbol != ' '
-        && _board.TileAt(new Position(1, 2)).Symbol != ' ') {
+    if (isNotEmpty(new Position(1, 0))
+        && isNotEmpty(new Position(1, 1))
+        && isNotEmpty(new Position(1, 2))) {
       // if middle row is full with same symbol
       if (_board.TileAt(new Position(1, 0)).Symbol == _board.TileAt(new Position(1, 1)).Symbol
           && _board.TileAt(new Position(1, 2)).Symbol == _board.TileAt(new Position(1, 1)).Symbol) {
@@ -61,9 +61,9 @@ public class Game {
     }
 
     // if the positions in first row are taken
-    if (_board.TileAt(new Position(2, 0)).Symbol != ' '
-        && _board.TileAt(new Position(2, 1)).Symbol != ' '
-        && _board.TileAt(new Position(2, 2)).Symbol != ' ') {
+    if (isNotEmpty(new Position(2, 0))
+        && isNotEmpty(new Position(2, 1))
+        && isNotEmpty(new Position(2, 2))) {
       // if middle row is full with same symbol
       if (_board.TileAt(new Position(2, 0)).Symbol == _board.TileAt(new Position(2, 1)).Symbol
           && _board.TileAt(new Position(2, 2)).Symbol == _board.TileAt(new Position(2, 1)).Symbol) {
@@ -72,5 +72,9 @@ public class Game {
     }
 
     return ' ';
+  }
+
+  private boolean isNotEmpty(Position position) {
+    return _board.TileAt(position).Symbol != ' ';
   }
 }
