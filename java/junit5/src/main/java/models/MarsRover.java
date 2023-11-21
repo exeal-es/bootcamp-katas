@@ -1,6 +1,5 @@
 package models;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class MarsRover {
@@ -51,10 +50,6 @@ public class MarsRover {
     this.direction = direction;
   }
 
-  public String[] getObstacles() {
-    return obstacles.getObstacles();
-  }
-
   public boolean isObstacleFound() {
     return obstacleFound;
   }
@@ -80,7 +75,6 @@ public class MarsRover {
   }
 
   boolean containsObstacle(int x, int y) {
-    return Arrays.asList(getObstacles())
-        .contains(x + ":" + y);
+    return obstacles.contains(x, y);
   }
 }

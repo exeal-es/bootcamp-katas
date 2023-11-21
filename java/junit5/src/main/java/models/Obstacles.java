@@ -10,4 +10,13 @@ public final class Obstacles {
   public String[] getObstacles() {
     return obstacles;
   }
+
+  public boolean contains(int x, int y) {
+    for (String obstacle : obstacles) {
+      if (obstacle.equals(x + ":" + y)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
