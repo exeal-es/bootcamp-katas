@@ -50,18 +50,6 @@ public class MarsRover {
     this.direction = direction;
   }
 
-  public int getY() {
-    return y;
-  }
-
-  public int getX() {
-    return x;
-  }
-
-  public void setObstacleFound(boolean obstacleFound) {
-    this.obstacleFound = obstacleFound;
-  }
-
   public void setY(int y) {
     this.y = y;
   }
