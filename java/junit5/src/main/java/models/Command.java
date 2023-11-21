@@ -14,4 +14,16 @@ public enum Command {
 
         return R;
     }
+
+    public boolean isMoveStraight() {
+        return this == M;
+    }
+
+    public boolean isTurnLeft() {
+        return this == L;
+    }
+
+    public boolean isTurnRight() {
+        return this == R;
+    }
 }

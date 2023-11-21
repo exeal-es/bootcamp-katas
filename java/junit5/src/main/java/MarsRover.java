@@ -3,8 +3,6 @@ import models.Commands;
 
 import java.util.Arrays;
 
-import static models.Command.*;
-
 public class MarsRover {
     private int x;
     private int y;
@@ -26,7 +24,7 @@ public class MarsRover {
 
     public void execute(Commands commands) {
         for (Command command : commands.getCommands()) {
-            if (isMoveStraight(command)) {
+            if (command.isMoveStraight()) {
                 switch (direction) {
                     case 'E':
                         obstacleFound = Arrays.asList(obstacles).contains((x + 1) + ":" + y);
@@ -49,7 +47,7 @@ public class MarsRover {
                         y = y > 0 && !obstacleFound ? y - 1 : y;
                         break;
                 }
-            } else if (isTurnLeft(command)) {
+            } else if (command.isTurnLeft()) {
                 // get new direction
                 int currentDirectionPosition = availableDirections.indexOf(direction);
                 if (currentDirectionPosition != 0) {
@@ -57,7 +55,7 @@ public class MarsRover {
                 } else {
                     direction = availableDirections.charAt(3);
                 }
-            } else if (isTurnRight(command)) {
+            } else if (command.isTurnRight()) {
                 // get new direction
                 int currentDirectionPosition = availableDirections.indexOf(direction);
                 if (currentDirectionPosition != 3) {
@@ -67,18 +65,6 @@ public class MarsRover {
                 }
             }
         }
-    }
-
-    private static boolean isTurnRight(Command command) {
-        return command == R;
-    }
-
-    private static boolean isTurnLeft(Command command) {
-        return command == L;
-    }
-
-    private static boolean isMoveStraight(Command command) {
-        return command == M;
     }
 
 }
