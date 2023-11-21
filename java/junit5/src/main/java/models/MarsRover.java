@@ -8,14 +8,14 @@ public class MarsRover {
   private int y;
   private char direction;
   private final String availableDirections = "NESW";
-  private final String[] obstacles;
+  private final Obstacles obstacles;
   private boolean obstacleFound;
 
   public MarsRover(int x, int y, char direction, String[] obstacles) {
     this.x = x;
     this.y = y;
     this.direction = direction;
-    this.obstacles = obstacles;
+    this.obstacles = new Obstacles(obstacles);
   }
 
   public String getState() {
@@ -51,7 +51,7 @@ public class MarsRover {
   }
 
   public String[] getObstacles() {
-    return obstacles;
+    return obstacles.getObstacles();
   }
 
   public boolean isObstacleFound() {
