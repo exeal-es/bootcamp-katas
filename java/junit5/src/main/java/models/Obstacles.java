@@ -11,7 +11,7 @@ public final class Obstacles {
     this.obstacles = Arrays.stream(obstacles).map(Obstacle::new).collect(Collectors.toList());
   }
 
-  public boolean contains(int x, int y) {
-    return obstacles.stream().anyMatch(obstacle -> obstacle.isInPosition(x, y));
+  public boolean collidePosition(int x, int y) {
+    return obstacles.stream().anyMatch(obstacle -> obstacle.collidePosition(x, y));
   }
 }

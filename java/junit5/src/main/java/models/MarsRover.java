@@ -75,6 +75,6 @@ public class MarsRover {
   }
 
   boolean containsObstacle(int x, int y) {
-    return obstacles.contains(x, y);
+    return obstacles.collidePosition(x, y);
   }
 }

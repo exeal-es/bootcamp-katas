@@ -11,7 +11,7 @@ public final class Obstacle {
     this.y = Integer.parseInt(positions[1]);
   }
 
-  public boolean isInPosition(int x, int y) {
+  public boolean collidePosition(int x, int y) {
     return this.x == x && this.y == y;
   }
 }
