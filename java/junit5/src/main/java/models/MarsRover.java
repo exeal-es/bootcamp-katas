@@ -55,30 +55,30 @@ public class MarsRover {
   }
 
   void moveEast() {
-    int newX = x + 1;
-    obstacleFound = containsObstacle(newX, y);
-    // check if rover reached plateau limit or found an obstacle
-    x = x < 9 && !obstacleFound ? newX : x;
+    move(x + 1, y);
   }
 
   void moveSouth() {
-    int newY = y + 1;
-    obstacleFound = containsObstacle(x, newY);
-    // check if rover reached plateau limit or found an obstacle
-    y = y < 9 && !obstacleFound ? newY : y;
+    move(x, y + 1);
   }
 
   void moveWest() {
-    int newX = x - 1;
-    obstacleFound = containsObstacle(newX, y);
-    // check if rover reached plateau limit or found an obstacle
-    x = x > 0 && !obstacleFound ? newX : x;
+    move(x - 1, y);
   }
 
   void moveNorth() {
-    int newY = y - 1;
-    obstacleFound = containsObstacle(x, newY);
-    // check if rover reached plateau limit or found an obstacle
-    y = y > 0 && !obstacleFound ? newY : y;
+    move(x, y - 1);
+  }
+
+  void move(final int x, final int y) {
+    if (containsObstacle(x, y)) {
+      obstacleFound = true;
+      return;
+    }
+    if (x < 0 || x > 9 || y < 0 || y > 9) {
+      return;
+    }
+    this.x = x;
+    this.y = y;
   }
 }
