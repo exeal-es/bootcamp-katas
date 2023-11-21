@@ -1,11 +1,9 @@
 package models;
 
-import models.Command;
-import models.Commands;
-
-import java.util.Arrays;
-
 public class MarsRover {
+    private final TurnRight turnRight = new TurnRight(this);
+    private final TurnLeft turnLeft = new TurnLeft(this);
+    private final MoveStraight moveStraight = new MoveStraight(this);
     private int x;
     private int y;
     private char direction;
@@ -27,58 +25,52 @@ public class MarsRover {
     public void execute(Commands commands) {
         for (Command command : commands.getCommands()) {
             if (command.isMoveStraight()) {
-                moveStraight();
+                moveStraight.moveStraight();
             } else if (command.isTurnLeft()) {
-                turnLeft();
+                turnLeft.turnLeft();
             } else if (command.isTurnRight()) {
-                turnRight();
+                turnRight.turnRight();
             }
         }
     }
 
-    private void turnRight() {
-        // get new direction
-        int currentDirectionPosition = availableDirections.indexOf(direction);
-        if (currentDirectionPosition != 3) {
-            direction = availableDirections.charAt(currentDirectionPosition + 1);
-        } else {
-            direction = availableDirections.charAt(0);
-        }
+    public char getDirection() {
+        return direction;
     }
 
-    private void turnLeft() {
-        // get new direction
-        int currentDirectionPosition = availableDirections.indexOf(direction);
-        if (currentDirectionPosition != 0) {
-            direction = availableDirections.charAt(currentDirectionPosition - 1);
-        } else {
-            direction = availableDirections.charAt(3);
-        }
+    public String getAvailableDirections() {
+        return availableDirections;
     }
 
-    private void moveStraight() {
-        switch (direction) {
-            case 'E':
-                obstacleFound = Arrays.asList(obstacles).contains((x + 1) + ":" + y);
-                // check if rover reached plateau limit or found an obstacle
-                x = x < 9 && !obstacleFound ? x + 1 : x;
-                break;
-            case 'S':
-                obstacleFound = Arrays.asList(obstacles).contains(x + ":" + (y + 1));
-                // check if rover reached plateau limit or found an obstacle
-                y = y < 9 && !obstacleFound ? y + 1 : y;
-                break;
-            case 'W':
-                obstacleFound = Arrays.asList(obstacles).contains((x - 1) + ":" + y);
-                // check if rover reached plateau limit or found an obstacle
-                x = x > 0 && !obstacleFound ? x - 1 : x;
-                break;
-            case 'N':
-                obstacleFound = Arrays.asList(obstacles).contains(x + ":" + (y - 1));
-                // check if rover reached plateau limit or found an obstacle
-                y = y > 0 && !obstacleFound ? y - 1 : y;
-                break;
-        }
+    public void setDirection(char direction) {
+        this.direction = direction;
     }
 
+    public String[] getObstacles() {
+        return obstacles;
+    }
+
+    public boolean isObstacleFound() {
+        return obstacleFound;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setObstacleFound(boolean obstacleFound) {
+        this.obstacleFound = obstacleFound;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
 }
