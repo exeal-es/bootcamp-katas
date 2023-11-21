@@ -71,11 +71,15 @@ public class MarsRover {
       obstacleFound = true;
       return;
     }
-    if (x < 0 || x > 9 || y < 0 || y > 9) {
+    if (isWithinLimits(x, y)) {
       return;
     }
     this.x = x;
     this.y = y;
+  }
+
+  private static boolean isWithinLimits(int x, int y) {
+    return x < 0 || x > 9 || y < 0 || y > 9;
   }
 
   private boolean containsObstacle(int x, int y) {
