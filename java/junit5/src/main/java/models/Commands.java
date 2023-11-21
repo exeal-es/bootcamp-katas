@@ -9,8 +9,8 @@ public final class Commands {
         this.commands = commands;
     }
 
-    public String commands() {
-        return commands;
+    public char[] getCommands() {
+        return commands.toCharArray();
     }
 
     @Override

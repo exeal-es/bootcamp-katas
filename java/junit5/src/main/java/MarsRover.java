@@ -22,7 +22,7 @@ public class MarsRover {
     }
 
     public void execute(Commands commands) {
-        for (char command : commands.commands().toCharArray()) {
+        for (char command : commands.getCommands()) {
             if (command == 'M') {
                 switch (direction) {
                     case 'E':
@@ -65,4 +65,5 @@ public class MarsRover {
             }
         }
     }
+
 }
