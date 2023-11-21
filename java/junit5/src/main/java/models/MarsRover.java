@@ -26,13 +26,8 @@ public class MarsRover {
 
     public void execute(Commands commands) {
         for (Command command : commands.getCommands()) {
-            execute(command);
+            getCommandAction(command).execute();
         }
-    }
-
-    private void execute(Command command) {
-        CommandAction commandAction = getCommandAction(command);
-        commandAction.execute();
     }
 
     private CommandAction getCommandAction(Command command) {
