@@ -2,14 +2,14 @@ package models;
 
 import java.util.Arrays;
 
-public class MoveStraight {
+public class MoveStraight implements CommandAction {
     private final MarsRover marsRover;
 
     public MoveStraight(MarsRover marsRover) {
         this.marsRover = marsRover;
     }
 
-    void moveStraight() {
+    public void execute() {
         switch (marsRover.getDirection()) {
             case 'E':
                 marsRover.setObstacleFound(Arrays.asList(marsRover.getObstacles()).contains((marsRover.getX() + 1) + ":" + marsRover.getY()));

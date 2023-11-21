@@ -1,13 +1,13 @@
 package models;
 
-public class TurnLeft {
+public class TurnLeft implements CommandAction{
     private final MarsRover marsRover;
 
     public TurnLeft(MarsRover marsRover) {
         this.marsRover = marsRover;
     }
 
-    void turnLeft() {
+    public void execute() {
         // get new direction
         int currentDirectionPosition = marsRover.getAvailableDirections().indexOf(marsRover.getDirection());
         if (currentDirectionPosition != 0) {

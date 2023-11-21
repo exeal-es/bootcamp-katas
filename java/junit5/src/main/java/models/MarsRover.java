@@ -24,14 +24,21 @@ public class MarsRover {
 
     public void execute(Commands commands) {
         for (Command command : commands.getCommands()) {
-            if (command.isMoveStraight()) {
-                moveStraight.moveStraight();
-            } else if (command.isTurnLeft()) {
-                turnLeft.turnLeft();
-            } else if (command.isTurnRight()) {
-                turnRight.turnRight();
-            }
+            execute(command);
         }
+    }
+
+    private void execute(Command command) {
+        CommandAction commandAction = null;
+
+        if (command.isMoveStraight()) {
+            commandAction = moveStraight;
+        } else if (command.isTurnLeft()) {
+            commandAction = turnLeft;
+        } else if (command.isTurnRight()) {
+            commandAction = turnRight;
+        }
+        commandAction.execute();
     }
 
     public char getDirection() {
