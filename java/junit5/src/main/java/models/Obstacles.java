@@ -1,22 +1,17 @@
 package models;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class Obstacles {
-  private final String[] obstacles;
+  private final List<Obstacle> obstacles;
 
   public Obstacles(String[] obstacles) {
-    this.obstacles = obstacles;
-  }
-
-  public String[] getObstacles() {
-    return obstacles;
+    this.obstacles = Arrays.stream(obstacles).map(Obstacle::new).collect(Collectors.toList());
   }
 
   public boolean contains(int x, int y) {
-    for (String obstacle : obstacles) {
-      if (obstacle.equals(x + ":" + y)) {
-        return true;
-      }
-    }
-    return false;
+    return obstacles.stream().anyMatch(obstacle -> obstacle.isInPosition(x, y));
   }
 }
