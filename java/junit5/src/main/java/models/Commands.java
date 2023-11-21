@@ -1,6 +1,9 @@
 package models;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public final class Commands {
     private final String commands;
@@ -9,8 +12,8 @@ public final class Commands {
         this.commands = commands;
     }
 
-    public char[] getCommands() {
-        return commands.toCharArray();
+    public List<Command> getCommands() {
+        return Arrays.stream(commands.split("")).map(Command::parse).collect(Collectors.toList());
     }
 
     @Override

@@ -1,6 +1,9 @@
+import models.Command;
 import models.Commands;
 
 import java.util.Arrays;
+
+import static models.Command.*;
 
 public class MarsRover {
     private int x;
@@ -22,7 +25,7 @@ public class MarsRover {
     }
 
     public void execute(Commands commands) {
-        for (char command : commands.getCommands()) {
+        for (Command command : commands.getCommands()) {
             if (isMoveStraight(command)) {
                 switch (direction) {
                     case 'E':
@@ -66,16 +69,16 @@ public class MarsRover {
         }
     }
 
-    private static boolean isTurnRight(char command) {
-        return command == 'R';
+    private static boolean isTurnRight(Command command) {
+        return command == R;
     }
 
-    private static boolean isTurnLeft(char command) {
-        return command == 'L';
+    private static boolean isTurnLeft(Command command) {
+        return command == L;
     }
 
-    private static boolean isMoveStraight(char command) {
-        return command == 'M';
+    private static boolean isMoveStraight(Command command) {
+        return command == M;
     }
 
 }
