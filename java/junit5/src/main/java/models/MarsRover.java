@@ -1,5 +1,7 @@
 package models;
 
+import java.util.HashMap;
+
 public class MarsRover {
     private final TurnRight turnRight = new TurnRight(this);
     private final TurnLeft turnLeft = new TurnLeft(this);
@@ -29,16 +31,18 @@ public class MarsRover {
     }
 
     private void execute(Command command) {
-        CommandAction commandAction = null;
-
-        if (command.isMoveStraight()) {
-            commandAction = moveStraight;
-        } else if (command.isTurnLeft()) {
-            commandAction = turnLeft;
-        } else if (command.isTurnRight()) {
-            commandAction = turnRight;
-        }
+        CommandAction commandAction = getCommandAction(command);
         commandAction.execute();
+    }
+
+    private CommandAction getCommandAction(Command command) {
+        HashMap<Command, CommandAction> commandMap = new HashMap<>();
+
+        commandMap.put(Command.M, new MoveStraight(this));
+        commandMap.put(Command.L, new TurnLeft(this));
+        commandMap.put(Command.R, new TurnRight(this));
+
+        return commandMap.get(command);
     }
 
     public char getDirection() {
