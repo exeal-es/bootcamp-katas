@@ -12,9 +12,7 @@ public class MoveStraight implements CommandAction {
   public void execute() {
     switch (marsRover.getDirection()) {
       case 'E':
-        marsRover.setObstacleFound(
-            Arrays.asList(marsRover.getObstacles())
-                .contains((marsRover.getX() + 1) + ":" + marsRover.getY()));
+        marsRover.setObstacleFound(containsObstacle(marsRover.getX() + 1, marsRover.getY()));
         // check if rover reached plateau limit or found an obstacle
         marsRover.setX(
             marsRover.getX() < 9 && !marsRover.isObstacleFound()
@@ -52,5 +50,10 @@ public class MoveStraight implements CommandAction {
                 : marsRover.getY());
         break;
     }
+  }
+
+  private boolean containsObstacle(int x, int y) {
+    return Arrays.asList(marsRover.getObstacles())
+        .contains(x + ":" + y);
   }
 }
