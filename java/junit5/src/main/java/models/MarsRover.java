@@ -50,14 +50,6 @@ public class MarsRover {
     this.direction = direction;
   }
 
-  public void setY(int y) {
-    this.y = y;
-  }
-
-  public void setX(int x) {
-    this.x = x;
-  }
-
   boolean containsObstacle(int x, int y) {
     return obstacles.collidePosition(x, y);
   }
@@ -66,31 +58,27 @@ public class MarsRover {
     int newX = x + 1;
     obstacleFound = containsObstacle(newX, y);
     // check if rover reached plateau limit or found an obstacle
-    setX(
-        x < 9 && !obstacleFound ? newX : x);
+    x = x < 9 && !obstacleFound ? newX : x;
   }
 
   void moveSouth() {
     int newY = y + 1;
     obstacleFound = containsObstacle(x, newY);
     // check if rover reached plateau limit or found an obstacle
-    setY(
-        y < 9 && !obstacleFound ? newY : y);
+    y = y < 9 && !obstacleFound ? newY : y;
   }
 
   void moveWest() {
     int newX = x - 1;
     obstacleFound = containsObstacle(newX, y);
     // check if rover reached plateau limit or found an obstacle
-    setX(
-        x > 0 && !obstacleFound ? newX : x);
+    x = x > 0 && !obstacleFound ? newX : x;
   }
 
   void moveNorth() {
     int newY = y - 1;
     obstacleFound = containsObstacle(x, newY);
     // check if rover reached plateau limit or found an obstacle
-    setY(
-        y > 0 && !obstacleFound ? newY : y);
+    y = y > 0 && !obstacleFound ? newY : y;
   }
 }
