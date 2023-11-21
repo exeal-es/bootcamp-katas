@@ -50,23 +50,24 @@ public class MarsRover {
     this.direction = direction;
   }
 
-  void moveEast() {
-    move(x + 1, y);
+  public void move() {
+    switch (direction) {
+      case 'E':
+        move(x + 1, y);
+        break;
+      case 'S':
+        move(x, y + 1);
+        break;
+      case 'W':
+        move(x - 1, y);
+        break;
+      case 'N':
+        move(x, y - 1);
+        break;
+    }
   }
 
-  void moveSouth() {
-    move(x, y + 1);
-  }
-
-  void moveWest() {
-    move(x - 1, y);
-  }
-
-  void moveNorth() {
-    move(x, y - 1);
-  }
-
-  void move(final int x, final int y) {
+  private void move(final int x, final int y) {
     if (containsObstacle(x, y)) {
       obstacleFound = true;
       return;
