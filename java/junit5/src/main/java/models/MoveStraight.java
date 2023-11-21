@@ -8,7 +8,6 @@ public class MoveStraight implements CommandAction {
   }
 
   public void execute() {
-    boolean obstacleFound = false;
     switch (marsRover.getDirection()) {
       case 'E':
         marsRover.moveEast();
