@@ -1,3 +1,5 @@
+import models.Commands;
+
 import java.util.Arrays;
 
 public class MarsRover {
@@ -19,8 +21,8 @@ public class MarsRover {
         return !obstacleFound ? x + ":" + y + ":" + direction : "O:" + x + ":" + y + ":" + direction;
     }
 
-    public void execute(String commands) {
-        for (char command : commands.toCharArray()) {
+    public void execute(Commands commands) {
+        for (char command : commands.commands().toCharArray()) {
             if (command == 'M') {
                 switch (direction) {
                     case 'E':

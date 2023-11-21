@@ -1,3 +1,4 @@
+import models.Commands;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,7 +12,7 @@ public class MarsRoverShould {
             "0, 1, N, M, 0:0:N"})
     public void moveOneCellForward(int x, int y, char direction, String commands, String expectedFinalState) {
         MarsRover marsRover = new MarsRover(x, y, direction, new String[]{});
-        marsRover.execute(commands);
+        marsRover.execute(new Commands(commands));
         assertEquals(expectedFinalState, marsRover.getState());
     }
 
@@ -22,7 +23,7 @@ public class MarsRoverShould {
             "0, 9, S, M, 0:9:S"})
     public void wrapAroundTheEdgesOfThePlateau(int x, int y, char direction, String commands, String expectedFinalState) {
         MarsRover marsRover = new MarsRover(x, y, direction, new String[]{});
-        marsRover.execute(commands);
+        marsRover.execute(new Commands(commands));
         assertEquals(expectedFinalState, marsRover.getState());
     }
 
@@ -37,7 +38,7 @@ public class MarsRoverShould {
             "RRRR, 0:0:E"})
     public void rotateLeftAndRight(String commands, String expectedFinalState) {
         MarsRover marsRover = new MarsRover(0, 0, 'E', new String[]{});
-        marsRover.execute(commands);
+        marsRover.execute(new Commands(commands));
         assertEquals(expectedFinalState, marsRover.getState());
     }
 
@@ -48,7 +49,7 @@ public class MarsRoverShould {
             "0, 9, N, MMM, 0:7, O:0:8:N"})
     public void stopAndReportIfAnObstacleIsFound(int x, int y, char direction, String commands, String obstaclePosition, String expectedFinalState) {
         MarsRover marsRover = new MarsRover(x, y, direction, new String[]{obstaclePosition});
-        marsRover.execute(commands);
+        marsRover.execute(new Commands(commands));
         assertEquals(expectedFinalState, marsRover.getState());
     }
 }
