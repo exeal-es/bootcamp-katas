@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class MarsRover {
@@ -76,5 +77,10 @@ public class MarsRover {
 
   public void setX(int x) {
     this.x = x;
+  }
+
+  boolean containsObstacle(int x, int y) {
+    return Arrays.asList(getObstacles())
+        .contains(x + ":" + y);
   }
 }

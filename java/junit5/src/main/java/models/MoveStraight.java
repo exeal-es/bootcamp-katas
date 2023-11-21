@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Arrays;
-
 public class MoveStraight implements CommandAction {
   private final MarsRover marsRover;
 
@@ -12,7 +10,7 @@ public class MoveStraight implements CommandAction {
   public void execute() {
     switch (marsRover.getDirection()) {
       case 'E':
-        marsRover.setObstacleFound(containsObstacle(marsRover.getX() + 1, marsRover.getY()));
+        marsRover.setObstacleFound(marsRover.containsObstacle(marsRover.getX() + 1, marsRover.getY()));
         // check if rover reached plateau limit or found an obstacle
         marsRover.setX(
             marsRover.getX() < 9 && !marsRover.isObstacleFound()
@@ -20,7 +18,7 @@ public class MoveStraight implements CommandAction {
                 : marsRover.getX());
         break;
       case 'S':
-        marsRover.setObstacleFound(containsObstacle(marsRover.getX(), (marsRover.getY() + 1)));
+        marsRover.setObstacleFound(marsRover.containsObstacle(marsRover.getX(), (marsRover.getY() + 1)));
         // check if rover reached plateau limit or found an obstacle
         marsRover.setY(
             marsRover.getY() < 9 && !marsRover.isObstacleFound()
@@ -28,7 +26,7 @@ public class MoveStraight implements CommandAction {
                 : marsRover.getY());
         break;
       case 'W':
-        marsRover.setObstacleFound(containsObstacle(marsRover.getX() - 1, marsRover.getY()));
+        marsRover.setObstacleFound(marsRover.containsObstacle(marsRover.getX() - 1, marsRover.getY()));
         // check if rover reached plateau limit or found an obstacle
         marsRover.setX(
             marsRover.getX() > 0 && !marsRover.isObstacleFound()
@@ -36,7 +34,7 @@ public class MoveStraight implements CommandAction {
                 : marsRover.getX());
         break;
       case 'N':
-        marsRover.setObstacleFound(containsObstacle(marsRover.getX(), marsRover.getY() - 1));
+        marsRover.setObstacleFound(marsRover.containsObstacle(marsRover.getX(), marsRover.getY() - 1));
         // check if rover reached plateau limit or found an obstacle
         marsRover.setY(
             marsRover.getY() > 0 && !marsRover.isObstacleFound()
@@ -46,8 +44,4 @@ public class MoveStraight implements CommandAction {
     }
   }
 
-  private boolean containsObstacle(int x, int y) {
-    return Arrays.asList(marsRover.getObstacles())
-        .contains(x + ":" + y);
-  }
 }
