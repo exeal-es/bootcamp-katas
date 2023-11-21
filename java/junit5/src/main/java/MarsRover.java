@@ -23,7 +23,7 @@ public class MarsRover {
 
     public void execute(Commands commands) {
         for (char command : commands.getCommands()) {
-            if (command == 'M') {
+            if (isMoveStraight(command)) {
                 switch (direction) {
                     case 'E':
                         obstacleFound = Arrays.asList(obstacles).contains((x + 1) + ":" + y);
@@ -46,7 +46,7 @@ public class MarsRover {
                         y = y > 0 && !obstacleFound ? y - 1 : y;
                         break;
                 }
-            } else if (command == 'L') {
+            } else if (isTurnLeft(command)) {
                 // get new direction
                 int currentDirectionPosition = availableDirections.indexOf(direction);
                 if (currentDirectionPosition != 0) {
@@ -54,7 +54,7 @@ public class MarsRover {
                 } else {
                     direction = availableDirections.charAt(3);
                 }
-            } else if (command == 'R') {
+            } else if (isTurnRight(command)) {
                 // get new direction
                 int currentDirectionPosition = availableDirections.indexOf(direction);
                 if (currentDirectionPosition != 3) {
@@ -64,6 +64,18 @@ public class MarsRover {
                 }
             }
         }
+    }
+
+    private static boolean isTurnRight(char command) {
+        return command == 'R';
+    }
+
+    private static boolean isTurnLeft(char command) {
+        return command == 'L';
+    }
+
+    private static boolean isMoveStraight(char command) {
+        return command == 'M';
     }
 
 }
