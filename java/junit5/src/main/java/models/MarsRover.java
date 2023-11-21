@@ -50,10 +50,6 @@ public class MarsRover {
     this.direction = direction;
   }
 
-  boolean containsObstacle(int x, int y) {
-    return obstacles.collidePosition(x, y);
-  }
-
   void moveEast() {
     move(x + 1, y);
   }
@@ -80,5 +76,9 @@ public class MarsRover {
     }
     this.x = x;
     this.y = y;
+  }
+
+  private boolean containsObstacle(int x, int y) {
+    return obstacles.collidePosition(x, y);
   }
 }
