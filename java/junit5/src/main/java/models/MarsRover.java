@@ -7,6 +7,7 @@ public class MarsRover {
   private int x;
   private int y;
   private char direction;
+  private Direction currentDirection;
   private final String availableDirections = "NESW";
   private final Obstacles obstacles;
   private boolean obstacleFound;
@@ -15,6 +16,7 @@ public class MarsRover {
     this.x = x;
     this.y = y;
     this.direction = direction;
+    this.currentDirection = Direction.parse(direction);
     this.obstacles = new Obstacles(obstacles);
   }
 
@@ -51,20 +53,7 @@ public class MarsRover {
   }
 
   public void move() {
-    switch (direction) {
-      case 'E':
-        move(x + 1, y);
-        break;
-      case 'S':
-        move(x, y + 1);
-        break;
-      case 'W':
-        move(x - 1, y);
-        break;
-      case 'N':
-        move(x, y - 1);
-        break;
-    }
+    move(currentDirection.moveX(x), currentDirection.moveY(y));
   }
 
   private void move(final int x, final int y) {
