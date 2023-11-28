@@ -5,14 +5,7 @@ public abstract class Vehicle {
 
     private boolean engineStarted = false;
 
-    public void fill() {
-        if (this instanceof PetrolCar) {
-            ((PetrolCar) this).fillUpWithFuel();
-        }
-        else if (this instanceof ElectricCar) {
-            ((ElectricCar) this).chargeBattery();
-        }
-    }
+    public abstract void fill();
 
     public void startEngine() {
         this.engineStarted = true;

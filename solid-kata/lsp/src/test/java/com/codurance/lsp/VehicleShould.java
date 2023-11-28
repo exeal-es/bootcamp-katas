@@ -29,6 +29,9 @@ public class VehicleShould {
 
 
   public class TestableVehicle extends Vehicle{
+    public void fill() {
+
+    }
   }
 
 }
