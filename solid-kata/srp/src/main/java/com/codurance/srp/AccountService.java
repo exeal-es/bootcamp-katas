@@ -39,7 +39,7 @@ public class AccountService {
 
     public void printStatement() {
         printHeader();
-        printTransactions();
+        printTransactions(transactionRepository.all());
     }
 
 
@@ -48,10 +48,9 @@ public class AccountService {
     }
 
 
-    private void printTransactions() {
-        List<Transaction> transactions = transactionRepository.all();
+    private void printTransactions(List<Transaction> allTransactions) {
         final AtomicInteger balance = new AtomicInteger(0);
-        transactions.stream()
+        allTransactions.stream()
                 .map(transaction -> statementLine(transaction, balance.addAndGet(transaction.amount())))
                 .collect(toCollection(LinkedList::new))
                 .descendingIterator()
