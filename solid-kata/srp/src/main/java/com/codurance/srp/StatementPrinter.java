@@ -5,7 +5,12 @@ import java.text.DecimalFormatSymbols;
 import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static java.util.stream.Collectors.toCollection;
 
 public class StatementPrinter {
     private Console console;
@@ -35,7 +40,16 @@ public class StatementPrinter {
         return dateFormatter.format(date);
     }
 
-    String statementLine(Transaction transaction, int balance, AccountService accountService) {
+    String statementLine(Transaction transaction, int balance) {
         return MessageFormat.format("{0} | {1} | {2}", formatDate(transaction.date()), formatNumber(transaction.amount()), formatNumber(balance));
+    }
+
+    void printTransactions(List<Transaction> allTransactions) {
+        final AtomicInteger balance = new AtomicInteger(0);
+        allTransactions.stream()
+                .map(transaction -> statementLine(transaction, balance.addAndGet(transaction.amount())))
+                .collect(toCollection(LinkedList::new))
+                .descendingIterator()
+                .forEachRemaining(line -> printLine(line));
     }
 }
