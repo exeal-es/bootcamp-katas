@@ -1,6 +1,5 @@
 package com.codurance.srp;
 
-import java.text.MessageFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,7 +37,7 @@ public class AccountService {
     private void printTransactions(List<Transaction> allTransactions) {
         final AtomicInteger balance = new AtomicInteger(0);
         allTransactions.stream()
-                .map(transaction -> statementLine(transaction, balance.addAndGet(transaction.amount())))
+                .map(transaction -> statementPrinter.statementLine(transaction, balance.addAndGet(transaction.amount()), this))
                 .collect(toCollection(LinkedList::new))
                 .descendingIterator()
                 .forEachRemaining(line -> statementPrinter.printLine(line));
@@ -47,11 +46,6 @@ public class AccountService {
 
     private Transaction transactionWith(int amount) {
         return new Transaction(clock.today(), amount);
-    }
-
-
-    private String statementLine(Transaction transaction, int balance) {
-        return MessageFormat.format("{0} | {1} | {2}", statementPrinter.formatDate(transaction.date()), statementPrinter.formatNumber(transaction.amount()), statementPrinter.formatNumber(balance));
     }
 
 

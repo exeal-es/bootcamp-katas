@@ -2,6 +2,7 @@ package com.codurance.srp;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -32,5 +33,9 @@ public class StatementPrinter {
         final String DATE_FORMAT = "dd/MM/yyyy";
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
         return dateFormatter.format(date);
+    }
+
+    String statementLine(Transaction transaction, int balance, AccountService accountService) {
+        return MessageFormat.format("{0} | {1} | {2}", formatDate(transaction.date()), formatNumber(transaction.amount()), formatNumber(balance));
     }
 }
