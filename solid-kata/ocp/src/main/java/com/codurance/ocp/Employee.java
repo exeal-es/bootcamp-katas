@@ -1,6 +1,6 @@
 package com.codurance.ocp;
 
-public class Employee {
+public abstract class Employee {
 
     protected int salary;
     private int bonus;
@@ -20,15 +20,5 @@ public class Employee {
         return new Manager(salary, bonus);
     }
 
-    public int payAmount() {
-        switch (this.type) {
-            case ENGINEER:
-                return salary;
-            case MANAGER:
-                return salary + bonus;
-            default:
-                return 0;
-        }
-    }
-
+    public abstract int payAmount();
 }
