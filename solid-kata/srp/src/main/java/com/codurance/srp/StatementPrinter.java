@@ -19,22 +19,17 @@ public class StatementPrinter {
         this.console = console;
     }
 
-    public void printLine(String line) {
+    private void printLine(String line) {
         console.printLine(line);
     }
 
-    void printHeader() {
-        final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
-        printLine(STATEMENT_HEADER);
-    }
-
-    String formatNumber(int amount) {
+    private String formatNumber(int amount) {
         final String AMOUNT_FORMAT = "#.00";
         DecimalFormat decimalFormat = new DecimalFormat(AMOUNT_FORMAT, DecimalFormatSymbols.getInstance(Locale.UK));
         return decimalFormat.format(amount);
     }
 
-    String formatDate(LocalDate date) {
+    private String formatDate(LocalDate date) {
         final String DATE_FORMAT = "dd/MM/yyyy";
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
         return dateFormatter.format(date);
@@ -44,7 +39,12 @@ public class StatementPrinter {
         return MessageFormat.format("{0} | {1} | {2}", formatDate(transaction.date()), formatNumber(transaction.amount()), formatNumber(balance));
     }
 
-    void printTransactions(List<Transaction> allTransactions) {
+    public void printHeader() {
+        final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
+        printLine(STATEMENT_HEADER);
+    }
+
+    public void printTransactions(List<Transaction> allTransactions) {
         final AtomicInteger balance = new AtomicInteger(0);
         allTransactions.stream()
                 .map(transaction -> statementLine(transaction, balance.addAndGet(transaction.amount())))
