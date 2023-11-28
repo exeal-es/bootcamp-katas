@@ -1,5 +1,7 @@
 package com.codurance.dip;
 
+import java.util.Objects;
+
 public class Email {
     private final String to;
     private final String subject;
@@ -21,5 +23,18 @@ public class Email {
 
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Email email = (Email) o;
+        return Objects.equals(to, email.to) && Objects.equals(subject, email.subject) && Objects.equals(message, email.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(to, subject, message);
     }
 }

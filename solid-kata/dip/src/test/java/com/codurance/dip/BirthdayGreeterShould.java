@@ -14,6 +14,7 @@ import java.util.Collections;
 import static com.codurance.dip.EmployeeBuilder.anEmployee;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BirthdayGreeterShould {
@@ -25,6 +26,8 @@ public class BirthdayGreeterShould {
     private EmployeeRepository employeeRepository;
     @Mock
     private Clock clock;
+    @Mock
+    private EmailSender emailSender;
 
     @InjectMocks
     private BirthdayGreeter birthdayGreeter;
@@ -41,10 +44,8 @@ public class BirthdayGreeterShould {
 
         birthdayGreeter.sendGreetings();
 
-        String actual = consoleContent.toString();
-        assertThat(actual)
-                .isEqualTo("To:" + employee.getEmail() + ", Subject: Happy birthday!, Message: Happy birthday, dear " + employee.getFirstName()+"!");
-
+        Email email = new Email(employee.getEmail(), "Happy birthday!", "Happy birthday, dear " + employee.getFirstName()+"!");
+        verify(emailSender).send(email);
     }
 
 
