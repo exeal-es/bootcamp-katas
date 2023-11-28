@@ -10,4 +10,9 @@ public class StatementPrinter {
     public void printLine(String line) {
         console.printLine(line);
     }
+
+    void printHeader() {
+        final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
+        printLine(STATEMENT_HEADER);
+    }
 }

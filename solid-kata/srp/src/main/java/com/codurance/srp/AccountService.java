@@ -37,14 +37,8 @@ public class AccountService {
     }
 
     public void printStatement() {
-        printHeader();
+        statementPrinter.printHeader();
         printTransactions(transactionRepository.all());
-    }
-
-
-    private void printHeader() {
-        final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
-        statementPrinter.printLine(STATEMENT_HEADER);
     }
 
 
