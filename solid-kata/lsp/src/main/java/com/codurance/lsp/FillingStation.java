@@ -6,9 +6,7 @@ public class FillingStation {
         vehicle.fillUpWithFuel();
     }
 
-    public void charge(Vehicle vehicle) {
-        if (vehicle instanceof ElectricCar) {
-            vehicle.chargeBattery();
-        }
+    public void charge(ElectricCar vehicle) {
+        vehicle.chargeBattery();
     }
 }

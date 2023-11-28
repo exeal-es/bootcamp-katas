@@ -8,11 +8,6 @@ public class PetrolCar extends Vehicle {
     this.fuelTankLevel = FUEL_TANK_FULL;
   }
 
-  @Override
-  public void chargeBattery() {
-    throw new UnsupportedOperationException("A petrol car cannot be recharged");
-  }
-
   public int fuelTankLevel() {
     return fuelTankLevel;
   }

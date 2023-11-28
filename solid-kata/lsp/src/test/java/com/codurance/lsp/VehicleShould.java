@@ -30,10 +30,6 @@ public class VehicleShould {
 
   public class TestableVehicle extends Vehicle{
 
-    @Override
-    public void chargeBattery() {
-
-    }
   }
 
 }

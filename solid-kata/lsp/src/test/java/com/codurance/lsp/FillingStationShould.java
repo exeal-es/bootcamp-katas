@@ -1,9 +1,8 @@
 package com.codurance.lsp;
 
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
+
+import org.junit.Test;
 
 public class FillingStationShould {
 
@@ -29,16 +28,5 @@ public class FillingStationShould {
 
         assertThat(car.batteryLevel())
             .isEqualTo(FULL);
-    }
-
-
-    @Test
-    public void not_fail_recharging_a_petrol_car() {
-        PetrolCar car = new PetrolCar();
-
-        Throwable throwable = catchThrowable(() -> fillingStation.charge(car));
-
-        assertThat(throwable)
-            .isNull();
     }
 }
