@@ -1,6 +1,6 @@
 package com.codurance.isp;
 
-public class Bird implements Animal, CanFly, CanRun, CanBark {
+public class Bird implements CanFly, CanRun, CanBark {
     public void bark() { }
     public void run() {
         System.out.print("Bird is running");
