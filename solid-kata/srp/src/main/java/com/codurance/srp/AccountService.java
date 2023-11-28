@@ -7,10 +7,10 @@ public class AccountService {
     private TransactionRepository transactionRepository;
     private Clock clock;
 
-    public AccountService(TransactionRepository transactionRepository, Clock clock, Console console) {
+    public AccountService(TransactionRepository transactionRepository, Clock clock, StatementPrinter printer) {
         this.transactionRepository = transactionRepository;
         this.clock = clock;
-        statementPrinter = new StatementPrinter(console);
+        statementPrinter = printer;
     }
 
     public void deposit(int amount) {
