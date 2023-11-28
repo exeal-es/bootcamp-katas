@@ -42,7 +42,7 @@ public class AccountServiceShould {
 
     @Before
     public void setUp() {
-        accountService = new AccountService(transactionRepository, clock, console);
+        accountService = new AccountService(transactionRepository, clock, new StatementPrinter(console));
         given(clock.today()).willReturn(TODAY);
     }
 
