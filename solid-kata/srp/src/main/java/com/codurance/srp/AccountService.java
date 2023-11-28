@@ -14,7 +14,6 @@ import static java.util.stream.Collectors.toCollection;
 
 public class AccountService {
 
-    private static final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
     private static final String DATE_FORMAT = "dd/MM/yyyy";
     private static final String AMOUNT_FORMAT = "#.00";
 
@@ -44,6 +43,7 @@ public class AccountService {
 
 
     private void printHeader() {
+        final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
         printLine(STATEMENT_HEADER);
     }
 
