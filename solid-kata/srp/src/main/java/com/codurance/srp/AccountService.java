@@ -39,17 +39,15 @@ public class AccountService {
 
     public void printStatement() {
         printHeader();
-        printTransactions();
+        printTransactions(transactionRepository.all());
     }
-
 
     private void printHeader() {
         printLine(STATEMENT_HEADER);
     }
 
 
-    private void printTransactions() {
-        List<Transaction> transactions = transactionRepository.all();
+    private void printTransactions(List<Transaction> transactions) {
         final AtomicInteger balance = new AtomicInteger(0);
         transactions.stream()
                 .map(transaction -> statementLine(transaction, balance.addAndGet(transaction.amount())))
