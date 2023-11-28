@@ -2,7 +2,7 @@ package com.codurance.ocp;
 
 public class Employee {
 
-    private int salary;
+    protected int salary;
     private int bonus;
     private EmployeeType type;
 
