@@ -48,7 +48,7 @@ public class AccountService {
                 .map(transaction -> statementLine(transaction, balance.addAndGet(transaction.amount())))
                 .collect(toCollection(LinkedList::new))
                 .descendingIterator()
-                .forEachRemaining(this::printLine);
+                .forEachRemaining(line -> statementPrinter.printLine(line));
     }
 
 
@@ -72,7 +72,4 @@ public class AccountService {
     }
 
 
-    private void printLine(String line) {
-        statementPrinter.printLine(line);
-    }
 }
