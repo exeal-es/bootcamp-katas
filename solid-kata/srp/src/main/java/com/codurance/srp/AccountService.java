@@ -38,8 +38,13 @@ public class AccountService {
     }
 
     public void printStatement() {
+        List<Transaction> transactions = transactionRepository.all();
+        doPrintStatement(transactions);
+    }
+
+    private void doPrintStatement(List<Transaction> transactions) {
         printHeader();
-        printTransactions(transactionRepository.all());
+        printTransactions(transactions);
     }
 
     private void printHeader() {
