@@ -4,7 +4,7 @@ public class Manager extends Employee {
     private final int bonus;
 
     public Manager(int salary, int bonus) {
-        super(salary, bonus, EmployeeType.MANAGER);
+        super(salary);
         this.bonus = bonus;
     }
 

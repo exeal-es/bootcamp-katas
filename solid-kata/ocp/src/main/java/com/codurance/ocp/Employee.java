@@ -3,17 +3,13 @@ package com.codurance.ocp;
 public abstract class Employee {
 
     protected int salary;
-    private int bonus;
-    private EmployeeType type;
 
-    protected Employee(int salary, int bonus, EmployeeType type) {
+    protected Employee(int salary) {
         this.salary = salary;
-        this.bonus = bonus;
-        this.type = type;
     }
 
-    static Employee createEngineer(int salary, int bonus) {
-        return new Engineer(salary, bonus);
+    static Employee createEngineer(int salary) {
+        return new Engineer(salary);
     }
 
     static Employee createManager(int salary, int bonus) {
