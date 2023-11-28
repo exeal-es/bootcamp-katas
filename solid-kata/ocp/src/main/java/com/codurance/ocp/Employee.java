@@ -17,7 +17,7 @@ public class Employee {
     }
 
     static Employee createManager(int salary, int bonus) {
-        return new Employee(salary, bonus, EmployeeType.MANAGER);
+        return new Manager(salary, bonus);
     }
 
     public int payAmount() {
