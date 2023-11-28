@@ -16,15 +16,15 @@ public class AccountService {
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
     private static final String AMOUNT_FORMAT = "#.00";
+    private final StatementPrinter statementPrinter;
 
     private TransactionRepository transactionRepository;
     private Clock clock;
-    private Console console;
 
     public AccountService(TransactionRepository transactionRepository, Clock clock, Console console) {
         this.transactionRepository = transactionRepository;
         this.clock = clock;
-        this.console = console;
+        statementPrinter = new StatementPrinter(console);
     }
 
     public void deposit(int amount) {
@@ -44,7 +44,7 @@ public class AccountService {
 
     private void printHeader() {
         final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
-        printLine(STATEMENT_HEADER);
+        statementPrinter.printLine(STATEMENT_HEADER);
     }
 
 
@@ -79,6 +79,6 @@ public class AccountService {
 
 
     private void printLine(String line) {
-        console.printLine(line);
+        statementPrinter.printLine(line);
     }
 }
