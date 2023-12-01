@@ -1,6 +1,8 @@
 public class SnakeAndLadders {
-
+	int turn = 0;
 	public String play(int die1, int die2) {
-		return "Player 1 is on square " + (die1+die2);
+
+		turn++;
+		return "Player " + turn + " is on square " + (die1+die2);
 	}
 }
