@@ -1,5 +1,5 @@
 public class SnakeAndLadders {
-	int turn = 0;
+	private int turn = 0;
 	public String play(int die1, int die2) {
 
 		turn++;

@@ -13,7 +13,7 @@ public class SnakeAndLaddersTest {
 	@Test
 	public void shouldAdvanceTwoSquareWhenDiceSumTwoAndIsTurnOfPlayer2 (){
 		SnakeAndLadders snakeAndLadders = new SnakeAndLadders();
-		String result = snakeAndLadders.play(1, 1);
+		snakeAndLadders.play(1, 1);
 		String resultPlayer2 = snakeAndLadders.play(1, 1);
 		assertThat(resultPlayer2).isEqualTo("Player 2 is on square 2");
 	}
