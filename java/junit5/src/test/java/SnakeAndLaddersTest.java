@@ -6,7 +6,8 @@ public class SnakeAndLaddersTest {
 
 	@Test
 	public void shouldAdvanceTwoSquareWhenDiceSumTwo (){
-		String result = SnakeAndLadders.play(1, 1);
+		SnakeAndLadders snakeAndLadders = new SnakeAndLadders();
+		String result = snakeAndLadders.play(1, 1);
 		assertThat(result).isEqualTo("Player 1 is on square 2");
 	}
 }
