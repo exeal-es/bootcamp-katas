@@ -12,6 +12,10 @@ public class SnakeAndLadders {
         }
         turn = 1;
         positionPlayer1 += die1 + die2;
+
+        if (positionPlayer1 == 100) {
+            return "Player 1 Wins!";
+        }
         return "Player " + turn + " is on square " + positionPlayer1;
     }
 }
