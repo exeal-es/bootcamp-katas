@@ -17,4 +17,12 @@ public class SnakeAndLaddersTest {
 		String resultPlayer2 = snakeAndLadders.play(1, 1);
 		assertThat(resultPlayer2).isEqualTo("Player 2 is on square 2");
 	}
+	@Test
+	public void shouldAlternateTurnBetweenPlayer1AndPlayer2 (){
+		SnakeAndLadders snakeAndLadders = new SnakeAndLadders();
+		snakeAndLadders.play(1, 1);
+		snakeAndLadders.play(1, 1);
+		String turnPlayer1 = snakeAndLadders.play(1, 1);
+		assertThat(turnPlayer1).isEqualTo("Player 1 is on square 4");
+	}
 }
