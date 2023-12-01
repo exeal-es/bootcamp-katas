@@ -47,4 +47,25 @@ public class SnakeAndLaddersTest {
         assertThat(player1Result).isEqualTo("Player 1 Wins!");
     }
 
+    @Test
+    public void shouldPlayer2Win() {
+        SnakeAndLadders snakeAndLadders = new SnakeAndLadders();
+
+        snakeAndLadders.play(1, 1);
+        String player2Result = snakeAndLadders.play(99, 1);
+
+        assertThat(player2Result).isEqualTo("Player 2 Wins!");
+    }
+
+    @Test
+    public void shouldFinishedTheGameWhenAPlayerWins() {
+        SnakeAndLadders snakeAndLadders = new SnakeAndLadders();
+
+        snakeAndLadders.play(1, 1);
+        snakeAndLadders.play(99, 1);
+        String resultThirdPlay = snakeAndLadders.play(1, 1);
+
+        assertThat(resultThirdPlay).isEqualTo("Game over!");
+    }
+
 }
