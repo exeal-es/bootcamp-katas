@@ -20,7 +20,7 @@ public class Ohce {
     }
 
     private void greetUser() {
-        if (clock.getHour() == 21 || clock.getHour() == 6) {
+        if (clock.getHour() >= 20 || clock.getHour() <= 6) {
             console.printLine(String.format("¡Buenas noches %s!", userName));
         } else {
             console.printLine(String.format("¡Buenos días %s!", userName));

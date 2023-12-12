@@ -50,7 +50,7 @@ public class OhceTest {
   }
 
   @ParameterizedTest
-  @CsvSource({"21", "6"})
+  @CsvSource({"20", "21", "5", "6"})
   public void shouldGreetWithGoodNightsWhenIsNight(int hour) {
       // given
       Mockito.when(clock.getHour()).thenReturn(hour);
