@@ -39,9 +39,11 @@ public class OhceTest {
         Mockito.verify(console).printLine("aloh");
     }
 
-  @Test
-  public void shouldGreetUser() {
-      // given
+  @ParameterizedTest
+  @CsvSource({"7", "8", "12"})
+  public void shouldGreetUserWithGoodMorningWhenIsMorning(int hour) {
+    // given
+      Mockito.when(clock.getHour()).thenReturn(hour);
       ohce = new Ohce("Javier", console, clock);
       // when
       ohce.run();
