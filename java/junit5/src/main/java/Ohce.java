@@ -8,9 +8,7 @@ public class Ohce {
     }
 
     public void run() {
-        final String word = console.readLine();
-        final String reversedWord = reverse(word);
-        console.printLine(reversedWord);
+        console.printLine(reverse(console.readLine()));
     }
 
     private static String reverse(String word) {
