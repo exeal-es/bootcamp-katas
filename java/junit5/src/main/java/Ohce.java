@@ -12,16 +12,15 @@ public class Ohce {
     }
 
     public void run() {
-        int hour = clock.getHour();
-        greetUser(hour);
+        greetUser();
         final String word = console.readLine();
         if (word != null) {
             console.printLine(reverse(word));
         }
     }
 
-    private void greetUser(int hour) {
-        if (hour == 21) {
+    private void greetUser() {
+        if (clock.getHour() == 21) {
             console.printLine(String.format("¡Buenas noches %s!", userName));
         } else {
             console.printLine(String.format("¡Buenos días %s!", userName));
