@@ -11,7 +11,7 @@ public class OhceTest {
     Ohce ohce;
 
     @Test
-    void shouldPrintWordReversed() {
+    void shouldPrintJamonReversed() {
         // given
         Console console = Mockito.mock(Console.class);
         when(console.readLine()).thenReturn("jamon");
@@ -20,5 +20,17 @@ public class OhceTest {
         ohce.run();
         // then
         Mockito.verify(console).printLine("nomaj");
+    }
+
+    @Test
+    void shouldPrintHolaReversed() {
+        // given
+        Console console = Mockito.mock(Console.class);
+        when(console.readLine()).thenReturn("hola");
+        ohce = new Ohce(console);
+        // when
+        ohce.run();
+        // then
+        Mockito.verify(console).printLine("aloh");
     }
 }

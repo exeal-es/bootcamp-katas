@@ -8,6 +8,8 @@ public class Ohce {
     }
 
     public void run() {
-        console.printLine("nomaj");
+        final String word = console.readLine();
+        final String reversedWord = new StringBuilder(word).reverse().toString();
+        console.printLine(reversedWord);
     }
 }
