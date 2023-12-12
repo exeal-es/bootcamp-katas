@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -47,10 +49,11 @@ public class OhceTest {
       Mockito.verify(console).printLine("¡Buenos días Javier!");
   }
 
-  @Test
-  public void shouldGreetWithGoodNightsWhenHourIs21() {
+  @ParameterizedTest
+  @CsvSource({"21", "6"})
+  public void shouldGreetWithGoodNightsWhenIsNight(int hour) {
       // given
-      Mockito.when(clock.getHour()).thenReturn(21);
+      Mockito.when(clock.getHour()).thenReturn(hour);
       ohce = new Ohce("Javier", console, clock);
       // when
       ohce.run();
