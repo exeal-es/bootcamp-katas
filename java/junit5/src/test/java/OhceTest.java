@@ -1,18 +1,23 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;
 
-
+@ExtendWith(MockitoExtension.class)
 public class OhceTest {
 
     Ohce ohce;
 
+    @Mock private Console console;
+    @Mock private Clock clock;
+
     @Test
     void shouldPrintJamonReversed() {
         // given
-        Console console = Mockito.mock(Console.class);
-        Clock clock = Mockito.mock(Clock.class);
         when(console.readLine()).thenReturn("jamon");
         ohce = new Ohce("Javier", console, clock);
         // when
@@ -24,8 +29,6 @@ public class OhceTest {
     @Test
     void shouldPrintHolaReversed() {
         // given
-        Console console = Mockito.mock(Console.class);
-        Clock clock = Mockito.mock(Clock.class);
         when(console.readLine()).thenReturn("hola");
         ohce = new Ohce("Javier", console, clock);
         // when
@@ -37,8 +40,6 @@ public class OhceTest {
   @Test
   public void shouldGreetUser() {
       // given
-      Console console = Mockito.mock(Console.class);
-      Clock clock = Mockito.mock(Clock.class);
       ohce = new Ohce("Javier", console, clock);
       // when
       ohce.run();
@@ -49,8 +50,6 @@ public class OhceTest {
   @Test
   public void shouldGreetWithGoodNightsWhenHourIs21() {
       // given
-      Console console = Mockito.mock(Console.class);
-      Clock clock = Mockito.mock(Clock.class);
       Mockito.when(clock.getHour()).thenReturn(21);
       ohce = new Ohce("Javier", console, clock);
       // when
