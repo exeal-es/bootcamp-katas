@@ -9,7 +9,11 @@ public class Ohce {
 
     public void run() {
         final String word = console.readLine();
-        final String reversedWord = new StringBuilder(word).reverse().toString();
+        final String reversedWord = reverse(word);
         console.printLine(reversedWord);
+    }
+
+    private static String reverse(String word) {
+        return new StringBuilder(word).reverse().toString();
     }
 }
