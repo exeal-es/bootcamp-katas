@@ -20,7 +20,7 @@ public class OhceTest {
   @Test
   void shouldPrintJamonReversed() {
     // given
-    when(console.readLine()).thenReturn("jamon");
+    when(console.readLine()).thenReturn("jamon", "Stop!");
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -31,7 +31,7 @@ public class OhceTest {
   @Test
   void shouldPrintHolaReversed() {
     // given
-    when(console.readLine()).thenReturn("hola");
+    when(console.readLine()).thenReturn("hola", "Stop!");
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -78,7 +78,7 @@ public class OhceTest {
   @Test
   public void shouldCongratsWhenWordIsPalindromicAfterReverseIt() {
     // given
-    when(console.readLine()).thenReturn("oto");
+    when(console.readLine()).thenReturn("oto", "Stop!");
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -97,5 +97,19 @@ public class OhceTest {
     ohce.run();
     // then
     Mockito.verify(console).printLine("Adios Javier");
+  }
+
+  @Test
+  public void shouldAskUserUntilItWantsToStop() {
+    // given
+    when(console.readLine()).thenReturn("oto", "Stop!");
+    ohce = new Ohce("Javier", console, clock);
+    // when
+    ohce.run();
+    // then
+    final InOrder console = Mockito.inOrder(this.console);
+    console.verify(this.console).printLine("oto");
+    console.verify(this.console).printLine("¡Bonita palabra!");
+    console.verify(this.console).printLine("Adios Javier");
   }
 }

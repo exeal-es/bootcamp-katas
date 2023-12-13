@@ -38,16 +38,16 @@ public class Ohce {
 
   public void run() {
     greetUser();
-    final String word = console.readLine();
-    if (word == null) {
-      return;
-    }
-    if (userWantsToStop(word)) {
-      sayGoodbye();
-      return;
-    }
-    printReversed(word);
-    congratsIfPalindromic(word);
+    String word;
+    do {
+      word = console.readLine();
+      if (word == null) {
+        break;
+      }
+      printReversed(word);
+      congratsIfPalindromic(word);
+    } while (!userWantsToStop(word));
+    sayGoodbye();
   }
 
   private void greetUser() {
