@@ -14,13 +14,17 @@ public class Ohce {
     return new StringBuilder(word).reverse().toString();
   }
 
+  private static boolean isPalindromic(String word) {
+    return word.equals(reverse(word));
+  }
+
   public void run() {
     greetUser();
     final String word = console.readLine();
     if (word == null) {
       return;
     }
-    if (word.equals(reverse(word))) {
+    if (isPalindromic(word)) {
       console.printLine("¡Bonita palabra!");
     }
     console.printLine(reverse(word));
