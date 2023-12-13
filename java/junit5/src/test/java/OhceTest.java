@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -75,13 +76,15 @@ public class OhceTest {
   }
 
   @Test
-  public void shouldSayBonitaPalabraWhenWordIsPalindromic() {
+  public void shouldSayBonitaPalabraWhenWordIsPalindromicAfterReverseIt() {
     // given
     when(console.readLine()).thenReturn("oto");
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("¡Bonita palabra!");
+    final InOrder console = Mockito.inOrder(this.console);
+    console.verify(this.console).printLine("oto");
+    console.verify(this.console).printLine("¡Bonita palabra!");
   }
 }

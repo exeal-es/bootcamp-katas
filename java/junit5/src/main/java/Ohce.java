@@ -28,10 +28,10 @@ public class Ohce {
     if (word == null) {
       return;
     }
+    printReversed(word);
     if (isPalindromic(word)) {
       console.printLine("¡Bonita palabra!");
     }
-    printReversed(word);
   }
 
   private void greetUser() {
