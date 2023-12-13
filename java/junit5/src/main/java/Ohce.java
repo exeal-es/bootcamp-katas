@@ -10,6 +10,14 @@ public class Ohce {
     this.clock = clock;
   }
 
+  private static boolean userWantsToStop(String word) {
+    return word.equals("Stop!");
+  }
+
+  private void sayGoodbye() {
+    console.printLine(String.format("Adios %s", userName));
+  }
+
   private static String reverse(String word) {
     return new StringBuilder(word).reverse().toString();
   }
@@ -34,8 +42,8 @@ public class Ohce {
     if (word == null) {
       return;
     }
-    if (word.equals("Stop!")) {
-      console.printLine(String.format("Adios %s", userName));
+    if (userWantsToStop(word)) {
+      sayGoodbye();
       return;
     }
     printReversed(word);
