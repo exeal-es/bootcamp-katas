@@ -2,7 +2,7 @@ public class Ohce {
 
   private final String userName;
   private final Clock clock;
-  private Console console;
+  private final Console console;
 
   public Ohce(String userName, Console console, Clock clock) {
     this.userName = userName;
