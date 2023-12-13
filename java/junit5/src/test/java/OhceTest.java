@@ -102,4 +102,15 @@ public class OhceTest {
     console.verify(this.console).printLine("¡Bonita palabra!");
     console.verify(this.console).printLine("Adios Javier");
   }
+
+  @Test
+  public void shouldNotReverseStopWord() {
+    // given
+    when(console.readLine()).thenReturn("Stop!");
+    ohce = new Ohce("Javier", console, clock);
+    // when
+    ohce.run();
+    // then
+    Mockito.verify(console).printLine("Adios Javier");
+  }
 }

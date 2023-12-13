@@ -50,14 +50,19 @@ public class Ohce {
   public void run() {
     greetUser();
     String word;
+    boolean userWantsToStop = false;
     do {
       word = console.readLine();
       if (word == null) {
         break;
       }
+      userWantsToStop = userWantsToStop(word);
+      if (userWantsToStop) {
+        break;
+      }
       printReversed(word);
       congratsIfPalindromic(word);
-    } while (!userWantsToStop(word));
+    } while (true);
     sayGoodbye();
   }
 }
