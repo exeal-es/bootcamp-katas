@@ -18,6 +18,9 @@ public class Ohce {
     greetUser();
     final String word = console.readLine();
     if (word != null) {
+      if (word.equals(reverse(word))) {
+        console.printLine("¡Bonita palabra!");
+      }
       console.printLine(reverse(word));
     }
   }

@@ -73,4 +73,15 @@ public class OhceTest {
     // then
     Mockito.verify(console).printLine("¡Buenas noches Javier!");
   }
+
+  @Test
+  public void shouldSayBonitaPalabraWhenWordIsPalindromic() {
+    // given
+    when(console.readLine()).thenReturn("oto");
+    ohce = new Ohce("Javier", console, clock);
+    // when
+    ohce.run();
+    // then
+    Mockito.verify(console).printLine("¡Bonita palabra!");
+  }
 }
