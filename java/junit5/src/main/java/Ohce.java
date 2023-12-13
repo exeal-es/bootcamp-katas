@@ -17,12 +17,13 @@ public class Ohce {
   public void run() {
     greetUser();
     final String word = console.readLine();
-    if (word != null) {
-      if (word.equals(reverse(word))) {
-        console.printLine("¡Bonita palabra!");
-      }
-      console.printLine(reverse(word));
+    if (word == null) {
+      return;
     }
+    if (word.equals(reverse(word))) {
+      console.printLine("¡Bonita palabra!");
+    }
+    console.printLine(reverse(word));
   }
 
   private void greetUser() {
