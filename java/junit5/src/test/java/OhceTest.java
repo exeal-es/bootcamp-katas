@@ -39,7 +39,7 @@ public class OhceTest {
   }
 
   @ParameterizedTest
-  @CsvSource({"7", "8", "12"})
+  @CsvSource({"7", "8", "11"})
   public void shouldGreetUserWithGoodMorningWhenIsMorning(int hour) {
     // given
     Mockito.when(clock.getHour()).thenReturn(hour);
@@ -48,6 +48,18 @@ public class OhceTest {
     ohce.run();
     // then
     Mockito.verify(console).printLine("¡Buenos días Javier!");
+  }
+
+  @ParameterizedTest
+  @CsvSource({"12", "13", "15", "19"})
+  public void shouldGreetWithGoodAfternoonsWhenIsAfternoon(int hour) {
+    // given
+    Mockito.when(clock.getHour()).thenReturn(hour);
+    ohce = new Ohce("Javier", console, clock);
+    // when
+    ohce.run();
+    // then
+    Mockito.verify(console).printLine("¡Buenas tardes Javier!");
   }
 
   @ParameterizedTest
