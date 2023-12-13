@@ -10,6 +10,17 @@ public class Ohce {
     this.clock = clock;
   }
 
+  private void greetUser() {
+    int hour = clock.getHour();
+    if (hour >= 20 || hour <= 6) {
+      console.printLine(String.format("¡Buenas noches %s!", userName));
+    } else if (hour >= 12) {
+      console.printLine(String.format("¡Buenas tardes %s!", userName));
+    } else {
+      console.printLine(String.format("¡Buenos días %s!", userName));
+    }
+  }
+
   private static boolean userWantsToStop(String word) {
     return word.equals("Stop!");
   }
@@ -48,16 +59,5 @@ public class Ohce {
       congratsIfPalindromic(word);
     } while (!userWantsToStop(word));
     sayGoodbye();
-  }
-
-  private void greetUser() {
-    int hour = clock.getHour();
-    if (hour >= 20 || hour <= 6) {
-      console.printLine(String.format("¡Buenas noches %s!", userName));
-    } else if (hour >= 12) {
-      console.printLine(String.format("¡Buenas tardes %s!", userName));
-    } else {
-      console.printLine(String.format("¡Buenos días %s!", userName));
-    }
   }
 }
