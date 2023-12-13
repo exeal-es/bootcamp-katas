@@ -18,6 +18,10 @@ public class Ohce {
     return word.equals(reverse(word));
   }
 
+  private void printReversed(String word) {
+    console.printLine(reverse(word));
+  }
+
   public void run() {
     greetUser();
     final String word = console.readLine();
@@ -27,7 +31,7 @@ public class Ohce {
     if (isPalindromic(word)) {
       console.printLine("¡Bonita palabra!");
     }
-    console.printLine(reverse(word));
+    printReversed(word);
   }
 
   private void greetUser() {
