@@ -17,26 +17,16 @@ public class OhceTest {
   @Mock private Console console;
   @Mock private Clock clock;
 
-  @Test
-  void shouldPrintJamonReversed() {
+  @ParameterizedTest
+  @CsvSource({"jamon", "hola"})
+  void shouldPrintWordReversed(String word) {
     // given
-    when(console.readLine()).thenReturn("jamon", "Stop!");
+    when(console.readLine()).thenReturn(word, "Stop!");
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("nomaj");
-  }
-
-  @Test
-  void shouldPrintHolaReversed() {
-    // given
-    when(console.readLine()).thenReturn("hola", "Stop!");
-    ohce = new Ohce("Javier", console, clock);
-    // when
-    ohce.run();
-    // then
-    Mockito.verify(console).printLine("aloh");
+    Mockito.verify(console).printLine(new StringBuilder(word).reverse().toString());
   }
 
   @ParameterizedTest
