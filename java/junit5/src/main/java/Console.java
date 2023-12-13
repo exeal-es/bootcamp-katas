@@ -1,5 +1,5 @@
 public interface Console {
-    void printLine(String nomaj);
+  void printLine(String nomaj);
 
-    String readLine();
+  String readLine();
 }
