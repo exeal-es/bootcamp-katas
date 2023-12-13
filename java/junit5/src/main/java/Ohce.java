@@ -34,6 +34,10 @@ public class Ohce {
     if (word == null) {
       return;
     }
+    if (word.equals("Stop!")) {
+      console.printLine(String.format("Adios %s", userName));
+      return;
+    }
     printReversed(word);
     congratsIfPalindromic(word);
   }

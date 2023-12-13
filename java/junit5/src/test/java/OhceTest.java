@@ -87,4 +87,15 @@ public class OhceTest {
     console.verify(this.console).printLine("oto");
     console.verify(this.console).printLine("¡Bonita palabra!");
   }
+
+  @Test
+  public void shouldSayByeWhenUserWantsToStop() {
+    // given
+    when(console.readLine()).thenReturn("Stop!");
+    ohce = new Ohce("Javier", console, clock);
+    // when
+    ohce.run();
+    // then
+    Mockito.verify(console).printLine("Adios Javier");
+  }
 }
