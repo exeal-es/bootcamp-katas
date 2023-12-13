@@ -76,7 +76,7 @@ public class OhceTest {
   }
 
   @Test
-  public void shouldSayBonitaPalabraWhenWordIsPalindromicAfterReverseIt() {
+  public void shouldCongratsWhenWordIsPalindromicAfterReverseIt() {
     // given
     when(console.readLine()).thenReturn("oto");
     ohce = new Ohce("Javier", console, clock);
