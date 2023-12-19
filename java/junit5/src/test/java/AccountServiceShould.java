@@ -23,13 +23,22 @@ public final class AccountServiceShould {
 
   @Test
   public void printStatement() {
-    final List<Transaction> transactions =
-        List.of(anyTransaction());
+    final List<Transaction> transactions = List.of(anyTransaction());
     Mockito.when(accountRepository.getTransactions()).thenReturn(transactions);
 
     accountService.printStatement();
 
     Mockito.verify(statementPrinter).print(transactions);
+  }
+
+  @Test
+  public void depositTransaction() {
+    Transaction transaction =
+        new Transaction(LocalDate.of(2012, 1, 14), 1000, 1000, TransactionType.DEPOSIT);
+
+    accountService.deposit(1000);
+
+    Mockito.verify(accountRepository).save(transaction);
   }
 
   private static Transaction anyTransaction() {

@@ -1,3 +1,3 @@
 public enum TransactionType {
-  WITHDRAW
+  DEPOSIT, WITHDRAW
 }
