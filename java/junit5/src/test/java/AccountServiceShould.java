@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,6 @@ public final class AccountServiceShould {
   private Console console;
   private AccountService accountService;
 
-
   @BeforeEach
   void setUp() {
     accountRepository = Mockito.mock(AccountRepository.class);
@@ -23,11 +23,16 @@ public final class AccountServiceShould {
 
   @Test
   public void printStatement() {
-    final List<Transaction> transactions = List.of(new Transaction());
+    final List<Transaction> transactions =
+        List.of(anyTransaction());
     Mockito.when(accountRepository.getTransactions()).thenReturn(transactions);
 
     accountService.printStatement();
 
     Mockito.verify(statementPrinter).print(transactions);
+  }
+
+  private static Transaction anyTransaction() {
+    return new Transaction(LocalDate.of(2012, 1, 14), 500, 2500, TransactionType.WITHDRAW);
   }
 }
