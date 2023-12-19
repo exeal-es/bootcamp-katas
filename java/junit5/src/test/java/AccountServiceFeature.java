@@ -13,16 +13,18 @@ public final class AccountServiceFeature {
   void setUp() {
     clock = Mockito.mock(Clock.class);
     console = Mockito.mock(Console.class);
-    accountService = new AccountService(clock, console);
+    accountService =
+        new AccountService(
+            new InMemoryAccountRepository(), new ConsoleStatementPrinter(console), clock, console);
   }
 
   @Test
   public void shouldPrintStatements() {
-    Mockito.when(clock.getCurrentDate()).thenReturn(LocalDate.of(2012,1,10));
+    Mockito.when(clock.getCurrentDate()).thenReturn(LocalDate.of(2012, 1, 10));
     accountService.deposit(1000);
-    Mockito.when(clock.getCurrentDate()).thenReturn(LocalDate.of(2012,1,13));
+    Mockito.when(clock.getCurrentDate()).thenReturn(LocalDate.of(2012, 1, 13));
     accountService.deposit(2000);
-    Mockito.when(clock.getCurrentDate()).thenReturn(LocalDate.of(2012,1,14));
+    Mockito.when(clock.getCurrentDate()).thenReturn(LocalDate.of(2012, 1, 14));
     accountService.withdraw(500);
 
     accountService.printStatement();

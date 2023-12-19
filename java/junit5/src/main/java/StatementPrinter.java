@@ -1,14 +1,5 @@
-public class StatementPrinter {
+import java.util.List;
 
-	private final Console console;
-
-	public StatementPrinter(Console console) {
-
-		this.console = console;
-	}
-
-
-	public void print() {
-		console.println("Date || Amount || Balance");
-	}
+public interface StatementPrinter {
+  void print(List<Transaction> transactions);
 }

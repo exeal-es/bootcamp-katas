@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -5,22 +7,26 @@ import org.mockito.Mockito;
 public class StatementPrinterShould {
 
 	private Console console;
-	private StatementPrinter statementPrinter;
+	private ConsoleStatementPrinter statementPrinter;
 
 
 	@BeforeEach
 	void setUp() {
 		console = Mockito.mock(Console.class);
-		statementPrinter = new StatementPrinter(console);
+		statementPrinter = new ConsoleStatementPrinter(console);
 	}
 
 	@Test
 	public void printHeader() {
-
-		statementPrinter.print();
+		final List<Transaction> transactions = Collections.emptyList();
+		statementPrinter.print(transactions);
 
 		Mockito.verify(console)
 			.println("Date || Amount || Balance");
 	}
 
+	@Test
+	public void printStatement() {
+
+	}
 }
