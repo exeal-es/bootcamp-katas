@@ -21,7 +21,7 @@ public class OhceTest {
   @CsvSource({"jamon", "hola"})
   void shouldPrintWordReversed(String word) {
     // given
-    when(console.readLine()).thenReturn(word, "Stop!");
+    when(console.readLine()).thenReturn(new Word(word), new Word("Stop!"));
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -68,7 +68,7 @@ public class OhceTest {
   @Test
   public void shouldCongratsWhenWordIsPalindromicAfterReverseIt() {
     // given
-    when(console.readLine()).thenReturn("oto", "Stop!");
+    when(console.readLine()).thenReturn(new Word("oto"), new Word("Stop!"));
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -81,7 +81,7 @@ public class OhceTest {
   @Test
   public void shouldSayByeWhenUserWantsToStop() {
     // given
-    when(console.readLine()).thenReturn("Stop!");
+    when(console.readLine()).thenReturn(new Word("Stop!"));
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -92,7 +92,7 @@ public class OhceTest {
   @Test
   public void shouldAskUserUntilItWantsToStop() {
     // given
-    when(console.readLine()).thenReturn("oto", "Stop!");
+    when(console.readLine()).thenReturn(new Word("oto"), new Word("Stop!"));
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();
@@ -106,7 +106,7 @@ public class OhceTest {
   @Test
   public void shouldNotReverseStopWord() {
     // given
-    when(console.readLine()).thenReturn("Stop!");
+    when(console.readLine()).thenReturn(new Word("Stop!"));
     ohce = new Ohce("Javier", console, clock);
     // when
     ohce.run();

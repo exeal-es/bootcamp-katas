@@ -15,9 +15,9 @@ public final class SystemConsole implements Console {
   }
 
   @Override
-  public String readLine() {
+  public Word readLine() {
     try {
-      return readLineFromSystemIn();
+      return new Word(readLineFromSystemIn());
     } catch (NoSuchElementException ex) {
       System.err.println("Error reading from System.in");
       return null;
