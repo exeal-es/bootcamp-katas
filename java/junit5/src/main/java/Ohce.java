@@ -13,11 +13,11 @@ public class Ohce {
   private void greetUser() {
     int hour = clock.getHour();
     if (hour >= 20 || hour <= 6) {
-      console.printLine(String.format("¡Buenas noches %s!", userName));
+      console.printLine(new Word(String.format("¡Buenas noches %s!", userName)));
     } else if (hour >= 12) {
-      console.printLine(String.format("¡Buenas tardes %s!", userName));
+      console.printLine(new Word(String.format("¡Buenas tardes %s!", userName)));
     } else {
-      console.printLine(String.format("¡Buenos días %s!", userName));
+      console.printLine(new Word(String.format("¡Buenos días %s!", userName)));
     }
   }
 
@@ -26,7 +26,7 @@ public class Ohce {
   }
 
   private void sayGoodbye() {
-    console.printLine(String.format("Adios %s", userName));
+    console.printLine(new Word(String.format("Adios %s", userName)));
   }
 
   private static String reverse(String word) {
@@ -38,12 +38,12 @@ public class Ohce {
   }
 
   private void printReversed(String word) {
-    console.printLine(reverse(word));
+    console.printLine(new Word(reverse(word)));
   }
 
   private void congratsIfPalindromic(String word) {
     if (isPalindromic(word)) {
-      console.printLine("¡Bonita palabra!");
+      console.printLine(new Word("¡Bonita palabra!"));
     }
   }
 

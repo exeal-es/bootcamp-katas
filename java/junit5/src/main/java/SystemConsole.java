@@ -1,4 +1,3 @@
-import java.io.Reader;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ public final class SystemConsole implements Console {
   }
 
   @Override
-  public void printLine(String word) {
+  public void printLine(Word word) {
     System.out.println(word);
   }
 

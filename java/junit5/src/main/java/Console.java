@@ -1,5 +1,5 @@
 public interface Console {
-  void printLine(String word);
+  void printLine(Word word);
 
   String readLine();
 }

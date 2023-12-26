@@ -26,7 +26,7 @@ public class OhceTest {
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine(new StringBuilder(word).reverse().toString());
+    Mockito.verify(console).printLine(new Word(new StringBuilder(word).reverse().toString()));
   }
 
   @ParameterizedTest
@@ -38,7 +38,7 @@ public class OhceTest {
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("¡Buenos días Javier!");
+    Mockito.verify(console).printLine(new Word("¡Buenos días Javier!"));
   }
 
   @ParameterizedTest
@@ -50,7 +50,7 @@ public class OhceTest {
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("¡Buenas tardes Javier!");
+    Mockito.verify(console).printLine(new Word("¡Buenas tardes Javier!"));
   }
 
   @ParameterizedTest
@@ -62,7 +62,7 @@ public class OhceTest {
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("¡Buenas noches Javier!");
+    Mockito.verify(console).printLine(new Word("¡Buenas noches Javier!"));
   }
 
   @Test
@@ -74,8 +74,8 @@ public class OhceTest {
     ohce.run();
     // then
     final InOrder console = Mockito.inOrder(this.console);
-    console.verify(this.console).printLine("oto");
-    console.verify(this.console).printLine("¡Bonita palabra!");
+    console.verify(this.console).printLine(new Word("oto"));
+    console.verify(this.console).printLine(new Word("¡Bonita palabra!"));
   }
 
   @Test
@@ -86,7 +86,7 @@ public class OhceTest {
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("Adios Javier");
+    Mockito.verify(console).printLine(new Word("Adios Javier"));
   }
 
   @Test
@@ -98,9 +98,9 @@ public class OhceTest {
     ohce.run();
     // then
     final InOrder console = Mockito.inOrder(this.console);
-    console.verify(this.console).printLine("oto");
-    console.verify(this.console).printLine("¡Bonita palabra!");
-    console.verify(this.console).printLine("Adios Javier");
+    console.verify(this.console).printLine(new Word("oto"));
+    console.verify(this.console).printLine(new Word("¡Bonita palabra!"));
+    console.verify(this.console).printLine(new Word("Adios Javier"));
   }
 
   @Test
@@ -111,6 +111,6 @@ public class OhceTest {
     // when
     ohce.run();
     // then
-    Mockito.verify(console).printLine("Adios Javier");
+    Mockito.verify(console).printLine(new Word("Adios Javier"));
   }
 }
