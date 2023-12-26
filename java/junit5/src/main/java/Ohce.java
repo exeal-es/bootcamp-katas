@@ -21,28 +21,16 @@ public class Ohce {
     }
   }
 
-  private static boolean userWantsToStop(Word word) {
-    return word.equals(new Word("Stop!"));
-  }
-
   private void sayGoodbye() {
     console.printLine(new Word(String.format("Adios %s", userName)));
   }
 
-  private static Word reverse(Word word) {
-    return new Word(new StringBuilder(word.value()).reverse().toString());
-  }
-
-  private static boolean isPalindromic(Word word) {
-    return word.equals(reverse(word));
-  }
-
   private void printReversed(Word word) {
-    console.printLine(reverse(word));
+    console.printLine(word.reverse());
   }
 
   private void congratsIfPalindromic(Word word) {
-    if (isPalindromic(word)) {
+    if (word.isPalindromic()) {
       console.printLine(new Word("¡Bonita palabra!"));
     }
   }
@@ -50,13 +38,13 @@ public class Ohce {
   public void run() {
     greetUser();
     Word word;
-    boolean userWantsToStop = false;
+    boolean userWantsToStop;
     do {
       word = console.readLine();
       if (word == null) {
         break;
       }
-      userWantsToStop = userWantsToStop(word);
+      userWantsToStop = word.userWantsToStop();
       if (userWantsToStop) {
         break;
       }

@@ -7,6 +7,18 @@ public final class Word {
     this.value = value;
   }
 
+  public Word reverse() {
+    return new Word(new StringBuilder(value()).reverse().toString());
+  }
+
+  public boolean isPalindromic() {
+    return equals(reverse());
+  }
+
+  public boolean userWantsToStop() {
+    return equals(new Word("Stop!"));
+  }
+
   public String value() {
     return value;
   }
