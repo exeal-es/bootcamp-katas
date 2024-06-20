@@ -6,8 +6,7 @@ import java.util.List;
 public class AccountService {
     private final Calendar calendar;
     private final Console console;
-
-    private List<Transaction> transactions = new ArrayList<>();
+    private final TransactionRepository transactionRepository = new TransactionRepository();
 
     public AccountService(Calendar calendar, Console console) {
         this.calendar = calendar;
@@ -25,11 +24,15 @@ public class AccountService {
     private List<StatementLine> buildLinesWithBalances() {
         List<StatementLine> lines = new ArrayList<>();
         int balance = 0;
-        for (Transaction t : transactions) {
+        for (Transaction t : transactionRepository.getTransactions()) {
             balance += t.getAmount();
             lines.add(new StatementLine(t, balance));
         }
         return lines;
+    }
+
+    private List<Transaction> getTransactions() {
+        return transactionRepository.getTransactions();
     }
 
     private static List<StatementLine> reverse(List<StatementLine> lines) {
@@ -40,11 +43,15 @@ public class AccountService {
 
     public void deposit(int amount) {
         LocalDate date = calendar.today();
-        transactions.add(new Transaction(date, amount));
+        transactionRepository.addTransaction(new Transaction(date, amount));
+    }
+
+    private void addTransaction(Transaction e) {
+        transactionRepository.addTransaction(e);
     }
 
     public void withdraw(int amount) {
         LocalDate date = calendar.today();
-        transactions.add(new Transaction(date, -amount));
+        transactionRepository.addTransaction(new Transaction(date, -amount));
     }
 }
