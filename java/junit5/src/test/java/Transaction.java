@@ -9,6 +9,22 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public int getCredit() {
+        return isDeposit() ? amount : 0;
+    }
+
+    private boolean isDeposit() {
+        return amount >= 0;
+    }
+
+    public int getDebit() {
+        return isWithdrawal() ? -amount : 0;
+    }
+
+    private boolean isWithdrawal() {
+        return !isDeposit();
+    }
+
     public LocalDate getDate() {
         return date;
     }
