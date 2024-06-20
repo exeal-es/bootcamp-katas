@@ -20,7 +20,7 @@ class AccountServiceShould {
 
     @BeforeEach
     public void setUp() {
-        accountService = new AccountService(calendar, console);
+        accountService = new AccountService(calendar, console, new InMemoryTransactionRepository());
 
     }
 

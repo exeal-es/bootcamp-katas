@@ -6,11 +6,12 @@ import java.util.List;
 public class AccountService {
     private final Calendar calendar;
     private final Console console;
-    private final TransactionRepository transactionRepository = new TransactionRepository();
+    private final TransactionRepository transactionRepository;
 
-    public AccountService(Calendar calendar, Console console) {
+    public AccountService(Calendar calendar, Console console, TransactionRepository transactionRepository) {
         this.calendar = calendar;
         this.console = console;
+        this.transactionRepository = transactionRepository;
     }
 
     public void printStatement() {
@@ -31,10 +32,6 @@ public class AccountService {
         return lines;
     }
 
-    private List<Transaction> getTransactions() {
-        return transactionRepository.getTransactions();
-    }
-
     private static List<StatementLine> reverse(List<StatementLine> lines) {
         List<StatementLine> reversedLines = new ArrayList<>(lines);
         Collections.reverse(reversedLines);
@@ -44,10 +41,6 @@ public class AccountService {
     public void deposit(int amount) {
         LocalDate date = calendar.today();
         transactionRepository.addTransaction(new Transaction(date, amount));
-    }
-
-    private void addTransaction(Transaction e) {
-        transactionRepository.addTransaction(e);
     }
 
     public void withdraw(int amount) {
