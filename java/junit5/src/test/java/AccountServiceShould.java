@@ -1,18 +1,24 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class AccountServiceShould {
+
+    @Mock
+    Calendar calendar;
+    @Mock
+    Console console;
 
     @Test
     public void print_only_header_for_empty_account() {
-        Calendar calendar = Mockito.mock(Calendar.class);
-        Console console = Mockito.mock(Console.class);
-
         AccountService accountService = new AccountService(calendar, console);
         accountService.printStatement();
 
@@ -21,8 +27,6 @@ class AccountServiceShould {
 
     @Test
     public void print_a_single_deposit() {
-        Calendar calendar = Mockito.mock(Calendar.class);
-        Console console = Mockito.mock(Console.class);
         when(calendar.today()).thenReturn(LocalDate.of(2012, 1, 10));
 
         AccountService accountService = new AccountService(calendar, console);
@@ -34,8 +38,6 @@ class AccountServiceShould {
 
     @Test
     public void print_a_single_withdraw() {
-        Calendar calendar = Mockito.mock(Calendar.class);
-        Console console = Mockito.mock(Console.class);
         when(calendar.today()).thenReturn(LocalDate.of(2012, 1, 10));
 
         AccountService accountService = new AccountService(calendar, console);
