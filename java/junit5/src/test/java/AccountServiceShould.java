@@ -16,10 +16,16 @@ class AccountServiceShould {
     Calendar calendar;
     @Mock
     Console console;
+    private AccountService accountService;
+
+    @BeforeEach
+    public void setUp() {
+        accountService = new AccountService(calendar, console);
+
+    }
 
     @Test
     public void print_only_header_for_empty_account() {
-        AccountService accountService = new AccountService(calendar, console);
         accountService.printStatement();
 
         verify(console).println("date || credit || debit || balance");
@@ -29,7 +35,6 @@ class AccountServiceShould {
     public void print_a_single_deposit() {
         when(calendar.today()).thenReturn(LocalDate.of(2012, 1, 10));
 
-        AccountService accountService = new AccountService(calendar, console);
         accountService.deposit(1000);
         accountService.printStatement();
 
@@ -40,7 +45,6 @@ class AccountServiceShould {
     public void print_a_single_withdraw() {
         when(calendar.today()).thenReturn(LocalDate.of(2012, 1, 10));
 
-        AccountService accountService = new AccountService(calendar, console);
         accountService.withdraw(2000);
         accountService.printStatement();
 
