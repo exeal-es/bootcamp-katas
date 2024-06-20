@@ -31,4 +31,17 @@ class AccountServiceShould {
 
         verify(console).println("10/01/2012 || 1000.00 ||  || 1000.00");
     }
+
+    @Test
+    public void print_a_single_withdraw() {
+        Calendar calendar = Mockito.mock(Calendar.class);
+        Console console = Mockito.mock(Console.class);
+        when(calendar.today()).thenReturn(LocalDate.of(2012, 1, 10));
+
+        AccountService accountService = new AccountService(calendar, console);
+        accountService.withdraw(2000);
+        accountService.printStatement();
+
+        verify(console).println("10/01/2012 ||  || 2000.00 || -2000.00");
+    }
 }
