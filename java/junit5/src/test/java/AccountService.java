@@ -20,9 +20,13 @@ public class AccountService {
         if (!transactions.isEmpty()) {
             Transaction t = transactions.get(0);
             String formatDate = t.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            String formatCredit = formatNumberWithTwoDecimals(t.getCredit());
-            String formatDebit = formatNumberWithTwoDecimals(t.getDebit());
-            String formatBalance = formatNumberWithTwoDecimals(t.getBalance());
+            int amount = t.getAmount();
+            int credit = t.getAmount() >= 0 ? amount : 0;
+            int debit = t.getAmount() < 0 ? -amount : 0;
+            int balance = amount;
+            String formatCredit = formatNumberWithTwoDecimals(credit);
+            String formatDebit = formatNumberWithTwoDecimals(debit);
+            String formatBalance = formatNumberWithTwoDecimals(balance);
             console.println(String.format("%s || %s || %s || %s", formatDate, formatCredit, formatDebit, formatBalance));
         }
     }
@@ -36,17 +40,11 @@ public class AccountService {
 
     public void deposit(int amount) {
         LocalDate date = calendar.today();
-        int credit = amount;
-        int debit = 0;
-        int balance = amount;
-        transactions.add(new Transaction(date, credit, debit, balance));
+        transactions.add(new Transaction(date, amount));
     }
 
     public void withdraw(int amount) {
         LocalDate date = calendar.today();
-        int credit = 0;
-        int debit = amount;
-        int balance = -amount;
-        transactions.add(new Transaction(date, credit, debit, balance));
+        transactions.add(new Transaction(date, -amount));
     }
 }

@@ -2,31 +2,18 @@ import java.time.LocalDate;
 
 public class Transaction {
     private final LocalDate date;
-    private final int credit;
-    private final int debit;
-    private final int balance;
+    private final int amount;
 
-    public Transaction(LocalDate date, int credit, int debit, int balance) {
-
+    public Transaction(LocalDate date, int amount) {
         this.date = date;
-        this.credit = credit;
-        this.debit = debit;
-        this.balance = balance;
+        this.amount = amount;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public int getCredit() {
-        return credit;
-    }
-
-    public int getDebit() {
-        return debit;
-    }
-
-    public int getBalance() {
-        return balance;
+    public int getAmount() {
+        return amount;
     }
 }
