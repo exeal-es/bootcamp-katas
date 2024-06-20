@@ -1,5 +1,7 @@
+import javax.swing.plaf.nimbus.State;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AccountService {
@@ -15,8 +17,37 @@ public class AccountService {
 
     public void printStatement() {
         console.println("date || credit || debit || balance");
-        if (!transactions.isEmpty()) {
-            console.println(TransactionFormatter.formatTransaction(transactions.get(0)));
+        List<StatementLine> lines = new ArrayList<>();
+        int balance = 0;
+        for (Transaction t : transactions) {
+            balance += t.getAmount();
+            lines.add(new StatementLine(t, balance));
+        }
+
+        List<StatementLine> reversedLines = new ArrayList<>(lines);
+        Collections.reverse(reversedLines);
+        for (StatementLine line : reversedLines) {
+            console.println(TransactionFormatter.formatTransaction(line.getTransaction(), line.getBalance()));
+        }
+    }
+
+    private static class StatementLine {
+        private Transaction transaction;
+        private int balance;
+
+        public StatementLine(Transaction transaction, int balance) {
+
+            this.transaction = transaction;
+            this.balance = balance;
+        }
+
+
+        public Transaction getTransaction() {
+            return transaction;
+        }
+
+        public int getBalance() {
+            return balance;
         }
     }
 

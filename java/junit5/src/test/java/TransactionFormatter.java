@@ -2,11 +2,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class TransactionFormatter {
-    public static String formatTransaction(Transaction t) {
+    public static String formatTransaction(Transaction t, int balance) {
         String formatDate = t.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         int credit = t.getCredit();
         int debit = t.getDebit();
-        int balance = t.getAmount();
         String formatCredit = formatNumberWithTwoDecimals(credit);
         String formatDebit = formatNumberWithTwoDecimals(debit);
         String formatBalance = formatNumberWithTwoDecimals(balance);
