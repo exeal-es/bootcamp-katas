@@ -1,27 +1,15 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class LeapYearTests {
 
-  @Test
-  void year_2008_is_leap_year_because_its_divisible_by_4() {
+  @ParameterizedTest
+  @ValueSource(ints = {2008, 2012, 2016})
+  void years_divisible_by_4_are_leap_years(int year) {
     LeapYear leapYear = new LeapYear();
-    boolean isLeapYear = leapYear.isLeapYear(2008);
-    assertThat(isLeapYear).isTrue();
-  }
-
-  @Test
-  void year_2012_is_leap_year_because_its_divisible_by_4() {
-    LeapYear leapYear = new LeapYear();
-    boolean isLeapYear = leapYear.isLeapYear(2012);
-    assertThat(isLeapYear).isTrue();
-  }
-
-  @Test
-  void year_2016_is_leap_year_because_its_divisible_by_4() {
-    LeapYear leapYear = new LeapYear();
-    boolean isLeapYear = leapYear.isLeapYear(2016);
+    boolean isLeapYear = leapYear.isLeapYear(year);
     assertThat(isLeapYear).isTrue();
   }
 }
