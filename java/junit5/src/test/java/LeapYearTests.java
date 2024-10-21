@@ -1,5 +1,6 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -11,5 +12,12 @@ class LeapYearTests {
     LeapYear leapYear = new LeapYear();
     boolean isLeapYear = leapYear.isLeapYear(year);
     assertThat(isLeapYear).isTrue();
+  }
+
+  @Test
+  void year_1700_is_not_a_leap_year() {
+    LeapYear leapYear = new LeapYear();
+    boolean isLeapYear = leapYear.isLeapYear(1700);
+    assertThat(isLeapYear).isFalse();
   }
 }
