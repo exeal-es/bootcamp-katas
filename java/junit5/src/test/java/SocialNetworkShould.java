@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SocialNetworkShould {
-
     @Mock
     Console console;
 
@@ -19,5 +18,14 @@ class SocialNetworkShould {
         new SocialNetwork(console).start();
 
         verify(console).printLine("I love the weather today");
+    }
+
+    @Test
+    void show_a_message_in_timeline_that_was_previously_sent2() {
+        when(console.readLine()).thenReturn("Alice -> Damn! We lost!", "Alice");
+
+        new SocialNetwork(console).start();
+
+        verify(console).printLine("Damn! We lost!");
     }
 }

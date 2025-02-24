@@ -6,8 +6,8 @@ public class SocialNetwork {
     }
 
     public void start() {
+        var postingCommand = this.console.readLine();
         this.console.readLine();
-        this.console.readLine();
-        this.console.printLine("I love the weather today");
+        this.console.printLine(postingCommand.split(" -> ")[1]);
     }
 }
